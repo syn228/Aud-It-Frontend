@@ -2,9 +2,31 @@ class Adapter {
     static isLoggedIn() {
         return !!localStorage.getItem('token')
     }
-    
+
     static logout() {
         localStorage.removeItem('token');
+    }
+    static postSession(username, password, persistUser) {
+        const body = {
+            username,
+            password,
+        }
+
+        fetch(`http://localhost:4000/sessions/`, {
+            method: 'POST',
+            headers: {
+                "Content-Type": 'application/json'
+            },
+            body: JSON.stringify(body)
+        })
+        .then(res => res.json())
+        .then(json => {
+            if (json.username) {
+            localStorage.setItem('token', json.token);
+            persistUser(json)
+            }   
+            else alert("Your username or password is wrong. Please try again.")
+      })
     }
 
     static postFiles(files, currentUser) {

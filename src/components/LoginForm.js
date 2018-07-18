@@ -1,32 +1,14 @@
 import React, { Component } from 'react';
 import { connect } from "react-redux"
 import { logInChange, persistUser } from "../actions"
+import Adapter from "./Adapter"
 
 class LoginForm extends Component {
  
     handleSubmit = (event) => {
         event.preventDefault();
-        const body = {
-            username: this.props.username,
-            password: this.props.password
-        }
-
-        fetch(`http://localhost:4000/sessions/`, {
-            method: 'POST',
-            headers: {
-                "Content-Type": 'application/json'
-            },
-            body: JSON.stringify(body)
-        })
-        .then(res => res.json())
-        .then(json => {
-            if (json.username) {
-            localStorage.setItem('token', json.token);
-            this.props.persistUser(json)
-            this.props.history.push("/");
-            }   
-            else alert("Your username or password is wrong. Please try again.")
-      })
+        Adapter.postSession(this.props.username, this.props.password, this.props.persistUser)
+        this.props.history.push("/")
     }
 
     render() {
