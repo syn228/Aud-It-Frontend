@@ -20,10 +20,10 @@ function reducer(state=defaultState, action){
       return {...state, currentUserId: action.currentUserId}
     case "FILE_UPLOAD":
       for (let i=0; i < action.files.length; i++){
-        let textState
+        let textObject
         Adapter.initiateTesseract(action.files[i])
-        .then(result => textState = result.text )
-        .finally(resultOrError => Adapter.postFiles(action.files[i], state.currentUserId, textState))
+        .then(result => textObject = result )
+        .finally(resultOrError => Adapter.postFiles(action.files[i], state.currentUserId, textObject))
         
 
         
