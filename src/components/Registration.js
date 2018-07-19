@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from "react-redux"
-import { registerChange } from "../actions"
+import { registerChange, persistUser } from "../actions"
 import register from '../registerServiceWorker';
+import Adapter from './Adapter'
 
 class Registration extends Component {
     handleSubmit = (event) => {
@@ -24,6 +25,7 @@ class Registration extends Component {
           json => {
         if (json.username){
         localStorage.setItem('token', json.token);
+        Adapter.postSession(this.props.username, this.props.password, this.props.persistUser)
         this.props.history.push("/");
         }
         else {
@@ -57,7 +59,8 @@ function mapStateToProps(state){
 
 function mapDispatchToProps(dispatch){
     return {
-        handleChange: (event) => dispatch(registerChange(event))
+        handleChange: (event) => dispatch(registerChange(event)),
+        persistUser: (userId) => dispatch(persistUser(userId))
     }
 }
 export default connect(mapStateToProps, mapDispatchToProps)(Registration);

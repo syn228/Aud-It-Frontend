@@ -6,12 +6,11 @@ class Adapter {
     static logout() {
         localStorage.removeItem('token');
     }
-    static postSession(username, password, persistUser) {
+    static postSession(username, password, persistUser, history) {
         const body = {
             username,
             password,
         }
-
         fetch(`http://localhost:4000/sessions/`, {
             method: 'POST',
             headers: {
@@ -24,6 +23,7 @@ class Adapter {
             if (json.username) {
             localStorage.setItem('token', json.token);
             persistUser(json.id)
+            history.push("/")
             }   
             else alert("Your username or password is wrong. Please try again.")
       })

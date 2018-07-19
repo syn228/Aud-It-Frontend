@@ -8,7 +8,7 @@ import Files from './components/Files'
 import Logout from './components/Logout'
 import Adapter from './components/Adapter'
 import Registration from "./components/Registration"
-import { Route, Redirect } from 'react-router-dom';
+import { Route, Redirect, BrowserRouter as Router } from 'react-router-dom';
 import { connect } from 'react-redux'
 import { persistUser } from './actions'
 
@@ -17,8 +17,7 @@ class App extends Component {
  
   componentDidMount() {
     if (localStorage.token !== undefined){
-      let token = localStorage.token
-      this.parseJwt(token)
+      this.parseJwt(localStorage.token)
     }
   }
 
@@ -28,15 +27,14 @@ class App extends Component {
     this.props.persistUser(decodedPayload.id)
   };
 
-  handleClick = (event) => {
-    Adapter.logout();
-    <Redirect to="/"/>
-  }
+
   render() {
     return (
+      <Router>
       <div className="App">
-        <Navbar handleClick={this.handleClick}/>
+        <Navbar/>
 
+        
         <Route exact path="/" component={Homepage} />
         { Adapter.isLoggedIn() ?
            <Fragment>
@@ -50,11 +48,16 @@ class App extends Component {
               <Route exact path="/register" component={(props) => <Registration {...props} />} />
             </Fragment>
         }
+        
       </div>
+      </Router>
     );
   }
 }
+
 function mapDispatchToProps(dispatch){
+  console.log('this should log');
+  
   return {
     persistUser: (userId) => dispatch(persistUser(userId))
   } 
