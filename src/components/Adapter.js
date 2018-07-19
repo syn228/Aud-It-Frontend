@@ -31,13 +31,13 @@ class Adapter {
       })
     }
 
-    static postFiles(files, currentUserId) {
-        for (let i=0; i < files.length; i++){
+    static postFiles(file, currentUserId, text) {        
             let body = {
-                name: files[i].name,
+                name: file.name,
                 user_id: currentUserId,
-                extension: files[i].type,
-                size: files[i].size
+                extension: file.type,
+                size: file.size,
+                text: text
             }
             fetch(`http://localhost:4000/convertedfiles/`, {
                 method: 'POST',
@@ -47,13 +47,14 @@ class Adapter {
                 },
                 body: JSON.stringify(body)
             })
-            Tesseract.recognize(files[i])
+            
+    }
+    static initiateTesseract(file){
+        return Tesseract.recognize(file)
             .progress(message => console.log(message))
             .catch(err => console.error(err))
-            .then(result => console.log(result))
-            .finally(resultOrError => console.log(resultOrError))
-        }
     }
 }
+
 
 export default Adapter;

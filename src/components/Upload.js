@@ -16,7 +16,7 @@ class Upload extends React.Component {
           <h2>Dropped files</h2>
           <ul>
             {
-              this.props.files.map(f => <li key={f.name}>{f.name} - {f.size} bytes</li>)
+              this.props.text
             }
           </ul>
         </aside>
@@ -27,7 +27,8 @@ class Upload extends React.Component {
 function mapStateToProps(state){
   return {
   files: state.files,
-  currentUserId: state.currentUserId
+  currentUserId: state.currentUserId,
+  text: state.text
   }
 }
 

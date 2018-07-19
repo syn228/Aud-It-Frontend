@@ -25,3 +25,10 @@ export function persistUser(userId){
     currentUserId: userId
   }
 }
+
+export function conversion(loadingMessage){
+  return {
+    type: "FILE_CONVERSION",
+    loadingMessage:loadingMessage
+  }
+}

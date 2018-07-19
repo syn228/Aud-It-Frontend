@@ -1,4 +1,5 @@
 import Adapter from "./components/Adapter"
+import {Tesseract} from "tesseract.ts";
 
 const defaultState = {
   loginUsername: "",
@@ -13,10 +14,20 @@ const defaultState = {
 
 function reducer(state=defaultState, action){
   switch(action.type){
+    case "FILE_CONVERSION":
+      return {...state, loadingMessage: action.loadingMessage}
     case "PERSIST_USER":
       return {...state, currentUserId: action.currentUserId}
     case "FILE_UPLOAD":
-      Adapter.postFiles(action.files, state.currentUserId)
+      for (let i=0; i < action.files.length; i++){
+        let textState
+        Adapter.initiateTesseract(action.files[i])
+        .then(result => textState = result.text )
+        .finally(resultOrError => Adapter.postFiles(action.files[i], state.currentUserId, textState))
+        
+
+        
+      }
       return { ...state, files: [...state.files, ...action.files]}
     case "LOG_IN_CHANGE":
     if (action.event.target.id === "username"){
