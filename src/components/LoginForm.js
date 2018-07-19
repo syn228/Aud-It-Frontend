@@ -12,7 +12,6 @@ class LoginForm extends Component {
     }
 
     render() {
-        
         return (
             <div className="information">
                 Please Sign in:
@@ -25,6 +24,7 @@ class LoginForm extends Component {
         );
     }
 }
+
 function mapStateToProps(state){
     return {
     username: state.loginUsername,
@@ -35,7 +35,7 @@ function mapStateToProps(state){
 function mapDispatchToProps(dispatch){
     return {
         handleChange: (event) => dispatch(logInChange(event)),
-        persistUser: (userObj) => dispatch(persistUser(userObj))
+        persistUser: (userId) => dispatch(persistUser(userId))
     }
 }
 export default connect(mapStateToProps, mapDispatchToProps)(LoginForm);

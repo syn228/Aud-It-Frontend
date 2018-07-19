@@ -19,9 +19,9 @@ export function onDrop(files){
   }
 }
 
-export function persistUser(userObj){
+export function persistUser(userId){
   return {
     type: "PERSIST_USER",
-    currentUser: userObj
+    currentUserId: userId
   }
 }

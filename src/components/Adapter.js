@@ -23,17 +23,17 @@ class Adapter {
         .then(json => {
             if (json.username) {
             localStorage.setItem('token', json.token);
-            persistUser(json)
+            persistUser(json.id)
             }   
             else alert("Your username or password is wrong. Please try again.")
       })
     }
 
-    static postFiles(files, currentUser) {
+    static postFiles(files, currentUserId) {
         for (let i=0; i < files.length; i++){
             let body = {
                 name: files[i].name,
-                user_id: currentUser.id,
+                user_id: currentUserId,
                 extension: files[i].type,
                 size: files[i].size
             }

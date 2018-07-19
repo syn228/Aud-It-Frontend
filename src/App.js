@@ -9,10 +9,25 @@ import Logout from './components/Logout'
 import Adapter from './components/Adapter'
 import Registration from "./components/Registration"
 import { Route, Redirect } from 'react-router-dom';
+import { connect } from 'react-redux'
+import { persistUser } from './actions'
 
 
 class App extends Component {
  
+  componentDidMount() {
+    if (localStorage.token !== undefined){
+      let token = localStorage.token
+      this.parseJwt(token)
+    }
+  }
+
+  parseJwt (token) {
+    var base64Url = token.split('.')[1];
+    let decodedPayload = JSON.parse(window.atob(base64Url))
+    this.props.persistUser(decodedPayload.id)
+  };
+
   handleClick = (event) => {
     Adapter.logout();
     <Redirect to="/"/>
@@ -39,5 +54,10 @@ class App extends Component {
     );
   }
 }
+function mapDispatchToProps(dispatch){
+  return {
+    persistUser: (userId) => dispatch(persistUser(userId))
+  } 
+}
 
-export default App;
+export default connect(null, mapDispatchToProps)(App);

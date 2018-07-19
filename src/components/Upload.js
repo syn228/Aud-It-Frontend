@@ -27,7 +27,7 @@ class Upload extends React.Component {
 function mapStateToProps(state){
   return {
   files: state.files,
-  currentUser: state.currentUser
+  currentUserId: state.currentUserId
   }
 }
 

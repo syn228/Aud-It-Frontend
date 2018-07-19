@@ -8,15 +8,15 @@ const defaultState = {
   first_name: "",
   last_name: "",
   files: [],
-  currentUser: {}
+  currentUserId: "",
 }
 
 function reducer(state=defaultState, action){
   switch(action.type){
     case "PERSIST_USER":
-      return {...state, currentUser: action.currentUser}
+      return {...state, currentUserId: action.currentUserId}
     case "FILE_UPLOAD":
-      Adapter.postFiles(action.files, state.currentUser)
+      Adapter.postFiles(action.files, state.currentUserId)
       return { ...state, files: [...state.files, ...action.files]}
     case "LOG_IN_CHANGE":
     if (action.event.target.id === "username"){
