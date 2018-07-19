@@ -56,8 +56,6 @@ class App extends Component {
 }
 
 function mapDispatchToProps(dispatch){
-  console.log('this should log');
-  
   return {
     persistUser: (userId) => dispatch(persistUser(userId))
   } 
