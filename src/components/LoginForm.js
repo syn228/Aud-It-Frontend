@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { connect } from "react-redux"
 import { logInChange, persistUser } from "../actions"
 import Adapter from "./Adapter"
-import { Redirect } from 'react-router-dom'
 
 class LoginForm extends Component {
     handleSubmit = (event) => {

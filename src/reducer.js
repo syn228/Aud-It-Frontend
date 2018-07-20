@@ -1,5 +1,4 @@
 import Adapter from "./components/Adapter"
-import {Tesseract} from "tesseract.ts";
 
 const defaultState = {
   loginUsername: "",

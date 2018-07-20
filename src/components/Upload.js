@@ -8,15 +8,18 @@ class Upload extends React.Component {
     return (
       <section>
         <div >
+          <img src="https://www.ukessays.com/images/services/essay/macbook-sample.png" style={{width: "20%"}}alt=""/>
+          <img src="http://www.transparentpng.com/thumb/arrow/big-right-arrow-icon-png-10.png" style={{width: "20%"}}alt=""/>
+          <img src="https://www.freeiconspng.com/uploads/file-mp3-music-music-file-song-icon-27.png" style={{width:"15%"}}alt=""/>
           <Dropzone className="dropzone" accept="image/png, image/jpeg, application/pdf " onDrop={this.props.onDrop.bind(this)}>
             <p>Click the box or drag files to convert!</p>
+            <p>(Accepted Filetypes: jpeg, png, pdf)</p>
           </Dropzone>
         </div>
         <aside>
-          <h2>Dropped files</h2>
           <ul>
             {
-              this.props.text
+              /*Insert process here*/
             }
           </ul>
         </aside>
@@ -26,9 +29,7 @@ class Upload extends React.Component {
 }
 function mapStateToProps(state){
   return {
-  files: state.files,
   currentUserId: state.currentUserId,
-  text: state.text
   }
 }
 

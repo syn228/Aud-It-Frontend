@@ -19,10 +19,13 @@
 }
 
 .dropzone {
-  margin: auto;
-  width: 50%;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 20%;
+  width: 20%;
   border: 3px solid blue;
-  padding: 5px;
+  border-style: dotted;
+  padding: 20px;
 }
 
 

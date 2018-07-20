@@ -8,7 +8,7 @@ import Files from './components/Files'
 import Logout from './components/Logout'
 import Adapter from './components/Adapter'
 import Registration from "./components/Registration"
-import { Route, Redirect, BrowserRouter as Router } from 'react-router-dom';
+import { Route, BrowserRouter as Router } from 'react-router-dom';
 import { connect } from 'react-redux'
 import { persistUser } from './actions'
 
