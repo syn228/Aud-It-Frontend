@@ -1,6 +1,6 @@
 import React, { Component, Fragment } from 'react';
-import { NavLink } from 'react-router-dom'
-import Adapter from './Adapter'  
+import { NavLink} from 'react-router-dom'
+import Adapter from './Adapter'
 
 class Navbar extends Component {
     handleClick = (event) => {

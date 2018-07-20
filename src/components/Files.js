@@ -66,16 +66,14 @@ class Files extends Component {
   }
   
   render() {    
-    console.log(this.state.start);
-    
     return (
       <div>
         {this.state.files.length > 0 
         ? 
         <div>
           {this.state.files.map(file => 
-            <div>
-            <li key={UUID()}>
+            <div key={UUID()}>
+            <li>
               <strong>Filename</strong>: {file.name} - 
               <strong>Size</strong>: {file.size} bytes - 
               <strong>Conversion Confidence</strong>: {file.confidence}

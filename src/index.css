@@ -1,25 +1,39 @@
 .nav {
   list-style-type: none;
-  margin: 0;
-  padding: 0;
+  top: 0;
+  left: 0;
+  width: 100%;
   overflow: hidden;
   background-color: #333;
 }
 
+body {
+  background-image: url("http://www.gadguide.com/wp-content/uploads/2017/11/wonderful-ideas-web-page-background-color-interest-at.jpg");
+  margin: 0;
+}
 
 .imgrep {
   width: 15%;
-  height: auto
+  height: auto;
+  padding: 10px;
+}
+
+.directions {
+  padding-top: 30px
 }
 
 .arrowrep {
   width: 12%;
-  height: auto
+  height: auto;
+  padding-top: 20px;
+  padding-left: 50px;
+  padding-right: 50px;
 }
 
 .audiorep {
   width: 12%;
-  height: auto
+  height: auto;
+  padding: 10px
 }
 
 .tabs {
@@ -37,11 +51,12 @@
 .dropzone {
   margin-left: auto;
   margin-right: auto;
-  margin-top: 10%;
+  margin-top: 2%;
   width: 20%;
   border: 3px solid blue;
   border-style: dotted;
-  padding: 20px;
+  padding-top: 50px;
+  padding-bottom: 100px;
 }
 
 
