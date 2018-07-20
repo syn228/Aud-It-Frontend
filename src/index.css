@@ -6,6 +6,22 @@
   background-color: #333;
 }
 
+
+.imgrep {
+  width: 15%;
+  height: auto
+}
+
+.arrowrep {
+  width: 12%;
+  height: auto
+}
+
+.audiorep {
+  width: 12%;
+  height: auto
+}
+
 .tabs {
   float: left;
   display: block;
@@ -21,7 +37,7 @@
 .dropzone {
   margin-left: auto;
   margin-right: auto;
-  margin-top: 20%;
+  margin-top: 10%;
   width: 20%;
   border: 3px solid blue;
   border-style: dotted;
