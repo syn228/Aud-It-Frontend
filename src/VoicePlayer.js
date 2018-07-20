@@ -72,7 +72,8 @@ class VoicePlayer extends Component {
       { name: 'start', action: this.props.onStart },
       { name: 'error', action: this.props.onError },
       { name: 'pause', action: this.props.onPause },
-      { name: 'resume', action: this.props.onResume }
+      { name: 'resume', action: this.props.onResume },
+      { name: 'manual', action: this.props.manual}
     ]
 
     events.forEach(e => {

@@ -32,9 +32,14 @@ class Files extends Component {
           this.setState({pause: false, button: "Pause Audio"}) 
             }  
     });
+  }
 
-    
-    
+  cancelAudio = () => {
+    this.setState({
+      start: false,
+      pause: false,
+      button: "Play Audio",
+    })
   }
 
   onEnd = () => {
@@ -76,12 +81,13 @@ class Files extends Component {
               <strong>Conversion Confidence</strong>: {file.confidence}
               🔊 
               <button value={file.name} onClick={this.togglePlay}>{this.state.button}</button>
+              <button onClick={this.cancelAudio}>Cancel Audio</button>
               </li>
               
               </div>
         ) }
         {this.state.start === true ? 
-        <VoicePlayer onEnd={this.onEnd} play={this.state.start} pause={this.state.pause} text={this.state.audiotext}/>
+        <VoicePlayer onEnd={this.onEnd} manual={this.cancelAudio} play={this.state.start} pause={this.state.pause} text={this.state.audiotext}/>
         : null
         } 
               </div>
