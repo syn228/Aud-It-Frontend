@@ -7,6 +7,19 @@
   background-color: #333;
 }
 
+.logo {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 12%;
+  height: auto;
+  margin-bottom: -15px;
+}
+
+.logodiv {
+  background-color: gray
+}
+
 body {
   background-image: url("http://www.gadguide.com/wp-content/uploads/2017/11/wonderful-ideas-web-page-background-color-interest-at.jpg");
   background-repeat: no-repeat;

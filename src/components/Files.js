@@ -68,17 +68,18 @@ class Files extends Component {
   render() {    
     return (
       <div>
+        <h1>Your Files</h1>
         {this.state.files.length > 0 
         ? 
         <div>
           {this.state.files.map(file => 
             <div key={UUID()}>
-            <li>
-              <strong>Filename</strong>: {file.name} - 
-              <strong>Size</strong>: {file.size} bytes - 
-              <strong>Conversion Confidence</strong>: {file.confidence}
-              🔊 
-              <button value={file.name} onClick={this.togglePlay}>{this.state.button}</button>
+            <h3>{file.name}</h3>
+            <li> 
+              <strong>Size</strong>: {file.size} bytes <br/> 
+              <strong>Conversion Confidence</strong>: {file.confidence} <br/>
+              🔊 <br/>
+              <button value={file.name} onClick={this.togglePlay}>{this.state.button}</button><br/>
               <button onClick={this.cancelAudio}>Cancel Audio</button>
               </li>
               
