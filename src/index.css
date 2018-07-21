@@ -7,6 +7,27 @@
   background-color: #333;
 }
 
+.loader:empty {
+  position: absolute;
+  top: calc(50% - 4em);
+  left: calc(50% - 4em);
+  width: 6em;
+  height: 6em;
+  border: 1.1em solid rgba(0, 0, 0, 0.2);
+  border-left: 1.1em solid #000000;
+  border-radius: 50%;
+  animation: load8 1.1s infinite linear;
+}
+
+@keyframes load8 {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
 .logo {
   display: block;
   margin-left: auto;
@@ -17,11 +38,11 @@
 }
 
 .logodiv {
-  background-color: gray
+  background-color: darkslategrey
 }
 
 body {
-  background-image: url("http://www.gadguide.com/wp-content/uploads/2017/11/wonderful-ideas-web-page-background-color-interest-at.jpg");
+  background-image: url("data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wCEAAkGBwoICAcHCA0QBwgHBw0HBwcHDQ8ICQcKFREWFhURExMYHSggGBoxGxMfITEhJSkrLi4uFx8zODMsNygtLisBCgoKDQ0NDg0NFSsZFRk3KysrLTcrLS0rKysrKzcrKysrKystLSsrLSsrKysrKysrKysrKysrKysrKysrKysrK//AABEIALEBHAMBIgACEQEDEQH/xAAZAAADAQEBAAAAAAAAAAAAAAAAAQIDBAb/xAAaEAEBAQEBAQEAAAAAAAAAAAAAEQESAhMD/8QAFwEBAQEBAAAAAAAAAAAAAAAAAAECA//EABURAQEAAAAAAAAAAAAAAAAAAAAR/9oADAMBAAIRAxEAPwD2/I5b8Dh3riw5HLfgcFGHI5b8Dgow5HLfgcFGHI5b8Dgow5PhvnhWeCq5+Dzw6c/NWfmlI5vmfzdPzP5lI5fmfzdXzHzKRyfMfN1/MfMpHH8y383Z807+ZSOTfBcOvfzTv5rSOXguXTvhPBRhyOW/A4KjDkct+BwUYcjlvwOCjDkct+BwUYcjlvwOCjbkctYIjTLkctYIDLkctYIDLkctYIgz4PPDXMVnkGWeFZ4bZis8lGOeFZ4a5hxFZcDlrBAZcny0ggMuRy1ggMuS4bQQGG+E7+bohb5Bzb4Tvh1b5Tvlajl4Lh0b5TuAx5HLWCKMuRy1ggMuRy1ggMuRy1ggKgi4IgiCLggIgi4ICIrMPMVmClmKzyrMVmIFmHDhgmCKAJgigCYIoAmCKAJgigCYIoAiFvlpC3AY75TuNtxO4DHcKNNwoqIgi4ICIIuCAiCLggKgioIipgioICYIqDMAsxeYMxeYBZioeYcQSFQQVJw4cBMOKzyfIIgjTkcgzgjTkuQZwRpyXIM4FwoCRFQQEbidxpC3FRjuFGm4ncBEEVBATBFQQEwRUEBUEVBATBFQQEw8w4eYAzFZgzFZiKIFCAk4cVmIJzFZisw4CYcMwSFAEiKAJhbihAZ7hbjWJ3AZkuFFEluLhQGe4ncabidwRnBFbgiiYIqCAmCKggKgioIipgioICYeYcPMAZiswZisxAocOHmAWYrMGYrMFIKggJCoICQqCAkKggJCoICRuKhQEbidxpuJ3ATCioIIz3E7jTcTuKI3CitwQEwRUEBMEVBAVBFQRBMEVBATDhw8wBiswsxWAIeYIYozDPMMCBhAgYAgYAgYAgYAgYBJbi06ojcKL3CBGp3F6W4IiFFQQEwRUEBMEVBAXBFQQEwRUEBMEVBAI8EPBRiswZh4BwQ8wRAgcEAgcEAgcEAgcEAgcEAgcEAoW4qFuAjSXqdUSncXCgJgioIImCKggJgioICoIqCCpgioICYIqCAmHDggAxDxAzGHAIHBAIHBAIHBAIHBAIHBAIHBASWqIE6nVlARBFQRRMEVBATBFQQEwRUEAvp5H08uTsdkSuv6eR9PLk7HZCuv6YPpjl7HZCur6YPpjl7HZCuv6YM/THJ2f0Irsz3h9Y5M/ReewdPWDrGGez6QbdYOsZdDoGvWCsuh0Daisui6BtRWPQ6BrR1jLpO+wbb6wt94w32nfawdHeF3jm7HZB094O8c3Y7IOnvB3jm7HZB09YO8c3Y7IOnrB1jn7HZBx9jtzfQfRtl09jpz/QfRIOjs+3N9B9Fg6ex25voO0iOnsdub6H9CDqz2rP0cfZ5+hFrvz9FZ7cOfo0z9EhXXns+3Ln6K+hFro7Ptz9jsK6Ox25+x2Qrfou2G/onf0IV0b7Rv6Off0Rv6ESujf0T259/Qu1hXT2O3P2Owro7Hbn7HZB0djtz9jsHR2O3P2OwdHY7c/Y7BxABpkYYAAACjDMARgADIAvy08gILxWAIqsMBUBAAnU6Aio9J9AKhAAAAAAAAAADwAAAAD//Z");
   background-repeat: no-repeat;
   background-size: cover;
   margin: 0;

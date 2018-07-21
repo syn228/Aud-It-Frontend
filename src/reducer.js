@@ -23,9 +23,6 @@ function reducer(state=defaultState, action){
         Adapter.initiateTesseract(action.files[i])
         .then(result => textObject = result )
         .finally(resultOrError => Adapter.postFiles(action.files[i], state.currentUserId, textObject))
-        
-
-        
       }
       return { ...state, files: [...state.files, ...action.files]}
     case "LOG_IN_CHANGE":

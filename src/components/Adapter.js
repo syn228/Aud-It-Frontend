@@ -32,6 +32,7 @@ class Adapter {
     }
 
     static postFiles(file, currentUserId, textObject) {   
+        console.log("Conversion finished!")
             let body = {
                 name: file.name,
                 user_id: currentUserId,

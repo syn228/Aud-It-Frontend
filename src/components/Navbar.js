@@ -4,15 +4,16 @@ import Adapter from './Adapter'
 import homelogo from '../assets/homelogo.png'
 
 class Navbar extends Component {
-    handleClick = (event) => {
+    handleClick = (event) => {  
         Adapter.logout();
         this.props.history.push("/")
     }
+    
     render() {
         return (
             <div>
             <div className="logodiv">
-                <img className="logo" src={homelogo} alt=""/>
+                <img onClick={this.handleClick} className="logo" src={homelogo} alt=""/>
             </div>
                 <div>
                     <header className="nav">
