@@ -4,6 +4,8 @@
   "private": true,
   "dependencies": {
     "@material-ui/core": "^1.4.0",
+    "image-convert": "^0.1.33",
+    "jimp": "^0.2.27",
     "react": "^16.4.1",
     "react-dom": "^16.4.1",
     "react-dropzone": "^4.2.13",
@@ -13,6 +15,7 @@
     "react-speech": "^0.3.2",
     "react-voice-components": "^1.0.0",
     "redux": "^4.0.0",
+    "redux-thunk": "^2.3.0",
     "tesseract.js": "^1.0.10",
     "tesseract.ts": "^1.0.3"
   },

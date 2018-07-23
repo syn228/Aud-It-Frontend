@@ -8,9 +8,10 @@ import Files from './components/Files'
 import Logout from './components/Logout'
 import Adapter from './components/Adapter'
 import Registration from "./components/Registration"
-import { Route, BrowserRouter as Router } from 'react-router-dom';
+import { Route, BrowserRouter as Router, withRouter } from 'react-router-dom';
 import { connect } from 'react-redux'
 import { persistUser } from './actions'
+
 
 
 class App extends Component {
@@ -60,4 +61,4 @@ function mapDispatchToProps(dispatch){
   } 
 }
 
-export default connect(null, mapDispatchToProps)(App);
+export default withRouter(connect(null, mapDispatchToProps)(App))

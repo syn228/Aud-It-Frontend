@@ -4,13 +4,14 @@ import './index.css';
 import App from './App';
 import { BrowserRouter as Router } from 'react-router-dom';
 import registerServiceWorker from './registerServiceWorker';
-import { createStore } from "redux"
+import { createStore, applyMiddleware } from "redux"
 import reducer from "./reducer"
 import { Provider } from "react-redux"
 import VoicePlayer from './VoicePlayer'
+import thunkMiddleware from 'redux-thunk'
 
 
-const store = createStore(reducer)
+const store = createStore(reducer, applyMiddleware(thunkMiddleware))
 
 
 ReactDOM.render(<Provider store={store}><Router><App > <VoicePlayer
