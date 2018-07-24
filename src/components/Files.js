@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import Adapter from './Adapter'
 import { connect } from 'react-redux'
 import File from './File'
+import UUID from 'uuid'
 
 
 
@@ -25,7 +26,7 @@ class Files extends Component {
         {this.state.files.length > 0 
         ?
           this.state.files.map(file => 
-            <File files={this.state.files} file={file} togglePlay={this.togglePlay}/>
+            <File key={UUID()} files={this.state.files} file={file} togglePlay={this.togglePlay}/>
           )
         : 
           <h3>You don't have any files. Go convert them first!</h3>}

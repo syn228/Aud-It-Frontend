@@ -1,6 +1,6 @@
-import React, { Component } from 'react'
+import React from 'react'
 
-class VoicePlayer extends Component {
+class VoicePlayer extends React.Component {
   constructor (props) {
     super(props)
 

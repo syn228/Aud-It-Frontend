@@ -13,7 +13,6 @@ import { connect } from 'react-redux'
 import { persistUser } from './actions'
 
 
-
 class App extends Component {
  
   componentDidMount() {

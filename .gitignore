@@ -1,5 +1,8 @@
 # See https://help.github.com/ignore-files/ for more about ignoring files.
 
+#access_keys
+.env
+
 # dependencies
 /node_modules
 
@@ -11,6 +14,7 @@
 
 # misc
 .DS_Store
+
 .env.local
 .env.development.local
 .env.test.local

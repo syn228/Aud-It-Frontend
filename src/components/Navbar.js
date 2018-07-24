@@ -22,12 +22,12 @@ class Navbar extends Component {
                             <Fragment>
                                 <NavLink className="tabs" exact to="/upload">Upload</NavLink>
                                 <NavLink className="tabs" exact to="/files">My Files</NavLink>
-                                <NavLink className="tabs" exact to="/logout" onClick={this.handleClick}>Log Out</NavLink>
+                                <NavLink className="tabs logs" exact to="/logout" onClick={this.handleClick}>Log Out</NavLink>
                             </Fragment>
                         :
                             <Fragment>
-                                <NavLink className="tabs" exact to="/register">Registration</NavLink>
-                                <NavLink className="tabs" exact to="/login">Login</NavLink>
+                                <NavLink className="tabs logs" exact to="/register">Registration</NavLink>
+                                <NavLink className="tabs logs" exact to="/login">Login</NavLink>
                             </Fragment>
                         }
                     </header>    
