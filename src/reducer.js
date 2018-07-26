@@ -20,6 +20,7 @@ function reducer(state=defaultState, action){
     case "FILE_UPLOAD":
       for (let i=0; i < action.files.length; i++){
         let textObject
+        Adapter.postToAws(action.files[i])
         Adapter.initiateTesseract(action.files[i])
         .then(result => textObject = result )
         .finally(resultOrError => Adapter.postFiles(action.files[i], state.currentUserId, textObject))

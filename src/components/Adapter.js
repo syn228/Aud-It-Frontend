@@ -8,6 +8,19 @@ class Adapter {
     static logout() {
         localStorage.removeItem('token');
     }
+
+    static postToAws(file) {
+        let formData = new FormData()
+
+        formData.append("name", file.name)
+        formData.append("attachment", file)
+
+        fetch("http://localhost:4000/uploads/", {
+        method: 'POST',
+        body: formData
+        })
+    }
+
     static postSession(username, password, persistUser, history) {
         const body = {
             username,
