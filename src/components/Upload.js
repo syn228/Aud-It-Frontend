@@ -4,24 +4,12 @@ import { connect } from "react-redux"
 import { onDrop } from "../actions"
 
 class Upload extends React.Component {
-  state = {
-    loading: false,
-  }
-
   handleUpload = (files) => {
-      this.setState({
-        loading: true 
-      }, () => {
-        this.props.onDrop(files)
-        setTimeout(() => this.setState({
-          loading: false
-        }), 10000)
-      })
+    this.props.onDrop(files, this.props.currentUserId)
   }
   
   render() {
-    const {loading} = this.state
-    if (!loading){
+    if (!this.props.loading){
       return (
         <section>
           <div >
@@ -32,15 +20,15 @@ class Upload extends React.Component {
             <h3>(Acceptable extensions: jpeg, png)</h3>
             <h3>*jpeg files will yield less accurate results! png files are preferred.</h3>
             <Dropzone className="dropzone" accept="image/png, image/jpeg, application/pdf" onDrop={this.handleUpload}>
-            <p>
-              Drop Files Here
-            </p>
-            <p>
-              or
-            </p>
-            <button>
-              Select File
-            </button>
+              <p>
+                Drop Files Here
+              </p>
+              <p>
+                or
+              </p>
+              <button>
+                Select Files
+              </button>
             </Dropzone>
           </div>
           <aside>
@@ -55,7 +43,14 @@ class Upload extends React.Component {
     }
     else {
       return (
-        <div className="loader"/>
+        <div>
+          <div className="loadingDisplay">
+            <h3>Converting {this.props.fileNumber}/{this.props.totalFiles} Files</h3>
+            <h3>{this.props.loadingMessage}</h3>
+            <h3>{parseFloat(Math.round(this.props.loadingProgress * 100))}%</h3>
+          </div>
+          <div className="loader"/>
+        </div>
       )
     }
   }
@@ -63,13 +58,13 @@ class Upload extends React.Component {
 function mapStateToProps(state){
   return {
   currentUserId: state.currentUserId,
-  files: state.files
+  files: state.files,
+  loading: state.loading,
+  fileNumber: state.fileNumber,
+  totalFiles: state.totalFiles,
+  loadingMessage: state.loadingMessage,
+  loadingProgress: state.loadingProgress
   }
 }
 
-function mapDispatchToProps(dispatch){
-  return {
-      onDrop: (files) => dispatch(onDrop(files))
-  }
-}
-export default connect(mapStateToProps, mapDispatchToProps)(Upload);
+export default connect(mapStateToProps, { onDrop })(Upload);

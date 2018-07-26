@@ -1,5 +1,3 @@
-import {Tesseract} from "tesseract.ts";
-
 class Adapter {
     static isLoggedIn() {
         return !!localStorage.getItem('token')
@@ -63,11 +61,6 @@ class Adapter {
                 body: JSON.stringify(body)
             })
             
-    }
-    static initiateTesseract(file){
-        return Tesseract.recognize(file)
-            .progress(message => console.log(message))
-            .catch(err => console.error(err))
     }
 
     static getFiles(){

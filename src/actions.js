@@ -1,3 +1,6 @@
+import Adapter from './components/Adapter'
+import {Tesseract} from "tesseract.ts";
+
 export function logInChange(event){
     return  {
       type: "LOG_IN_CHANGE",
@@ -12,11 +15,45 @@ export function registerChange(event){
   }
 }
 
-export function onDrop(files){
-  return  {
-    type: "FILE_UPLOAD",
-    files: files
+export function successfulUpload(bool, file, textObject){
+  return {
+    type: "SUCCESSFUL_UPLOAD",
+    loading: bool,
+    file: file,
+    textObject, textObject
   }
+}
+
+export function initiateLoading(bool, currentFileNumber, totalFiles, message){
+  return {
+    type: "INITIATE_LOADING",
+    loading: bool,
+    fileNumber: currentFileNumber,
+    totalFiles: totalFiles,
+    loadingMessage: message.status,
+    loadingProgress: message.progress,
+  }
+}
+
+export function onDrop(files, currentUserId){
+  return (dispatch) => {
+    for (let i=0; i < files.length; i++){
+      let textObject
+      Adapter.postToAws(files[i])
+      Tesseract.recognize(files[i])
+        .progress(message => dispatch(initiateLoading(true, i+1, files.length, message)))
+        .catch(err => console.log(err))
+        .then(result => textObject = result )
+        .finally(resultOrError => dispatch(successfulUpload(false, files[i], textObject)) ) 
+    }
+  }
+
+
+
+  // return  {
+  //   type: "FILE_UPLOAD",
+  //   files: files
+  // }
 }
 
 export function persistUser(userId){
