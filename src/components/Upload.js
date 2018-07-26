@@ -2,54 +2,14 @@ import Dropzone from 'react-dropzone'
 import React from 'react'
 import { connect } from "react-redux"
 import { onDrop } from "../actions"
-import DropzoneS3Uploader from 'react-dropzone-s3-uploader'
-import {jimp} from './New'
 
-let i = []
-let im = ""
 class Upload extends React.Component {
-  state = {
-    loading: false,
-    fileUrl: "",
-  }
-
-  onUploadStart = (info, next) => {
-    console.log('base.preprocess()', info);
-    return next(info);
-  }
-
-  onUploadError = (err) => {
-    console.log("err",err)
-  }
-
-  onUploadProgress = (percent, status, file) => {
-    return console.log('base.onProgress()', percent, status);
-  };
-
-  handleS3Upload = info => {
-    debugger
-    console.log('File uploaded with filename', info.filename)
-    console.log('Access it on s3 at', info.fileUrl)
-  }
-
   handleUpload = (files) => {
-      this.setState({
-        loading: true 
-      }, () => {
-        this.props.onDrop(files)
-        setTimeout(() => this.setState({
-          loading: false
-        }), 10000)
-      })
-  }
-
-  test = () => {
-    console.log(i)
+        this.props.onDrop(files, this.props.currentUserId)
   }
   
   render() {
-    const {loading} = this.state
-    if (!loading){
+    if (!this.props.loading){
       return (
         <section>
           <div >
@@ -82,7 +42,10 @@ class Upload extends React.Component {
     }
     else {
       return (
+        <div>
         <div className="loader"/>
+        <h3>Loading {this.props.fileNumber}/{this.props.totalFiles} Files</h3>
+        </div>
       )
     }
   }
@@ -90,13 +53,16 @@ class Upload extends React.Component {
 function mapStateToProps(state){
   return {
   currentUserId: state.currentUserId,
-  files: state.files
+  files: state.files,
+  loading: state.loading,
+  fileNumber: state.fileNumber,
+  totalFiles: state.totalFiles,
   }
 }
 
-function mapDispatchToProps(dispatch){
-  return {
-      onDrop: (files) => dispatch(onDrop(files))
-  }
-}
-export default connect(mapStateToProps, mapDispatchToProps)(Upload);
+// function mapDispatchToProps(dispatch){
+//   return {
+//       onDrop: (files) => dispatch(onDrop(files))
+//   }
+// }
+export default connect(mapStateToProps, { onDrop })(Upload);

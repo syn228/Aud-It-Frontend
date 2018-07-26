@@ -9,23 +9,24 @@ const defaultState = {
   last_name: "",
   files: [],
   currentUserId: "",
+  loading: false,
+  fileNumber: "",
+  totalFiles: "",
 }
 
 function reducer(state=defaultState, action){
   switch(action.type){
+    case "INITIATE_LOADING":
+      console.log("loading!")
+      return {...state, loading: action.loading, fileNumber: action.fileNumber, totalFiles: action.totalFiles }
     case "FILE_CONVERSION":
       return {...state, loadingMessage: action.loadingMessage}
     case "PERSIST_USER":
       return {...state, currentUserId: action.currentUserId}
-    case "FILE_UPLOAD":
-      for (let i=0; i < action.files.length; i++){
-        let textObject
-        Adapter.postToAws(action.files[i])
-        Adapter.initiateTesseract(action.files[i])
-        .then(result => textObject = result )
-        .finally(resultOrError => Adapter.postFiles(action.files[i], state.currentUserId, textObject))
-      }
-      return { ...state, files: [...state.files, ...action.files]}
+    case "SUCCESSFUL_UPLOAD":
+      console.log("Conversion Complete!")
+      Adapter.postFiles(action.file, state.currentUserId, action.textObject)
+      return { ...state, files: [...state.files, ...action.file], loading: action.loading}
     case "LOG_IN_CHANGE":
     if (action.event.target.id === "username"){
       return { ...state, loginUsername: action.event.target.value}
