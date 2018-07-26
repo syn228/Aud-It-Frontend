@@ -2,34 +2,10 @@ import Dropzone from 'react-dropzone'
 import React from 'react'
 import { connect } from "react-redux"
 import { onDrop } from "../actions"
-import DropzoneS3Uploader from 'react-dropzone-s3-uploader'
-import {jimp} from './New'
 
-let i = []
-let im = ""
 class Upload extends React.Component {
   state = {
     loading: false,
-    fileUrl: "",
-  }
-
-  onUploadStart = (info, next) => {
-    console.log('base.preprocess()', info);
-    return next(info);
-  }
-
-  onUploadError = (err) => {
-    console.log("err",err)
-  }
-
-  onUploadProgress = (percent, status, file) => {
-    return console.log('base.onProgress()', percent, status);
-  };
-
-  handleS3Upload = info => {
-    debugger
-    console.log('File uploaded with filename', info.filename)
-    console.log('Access it on s3 at', info.fileUrl)
   }
 
   handleUpload = (files) => {
@@ -41,10 +17,6 @@ class Upload extends React.Component {
           loading: false
         }), 10000)
       })
-  }
-
-  test = () => {
-    console.log(i)
   }
   
   render() {
@@ -58,6 +30,7 @@ class Upload extends React.Component {
             <img className="audiorep" src="http://pngimg.com/uploads/headphones/headphones_PNG7623.png" alt=""/>
             <h2 className="directions">Click or drag files into the box below to convert your document into an audio file!</h2>
             <h3>(Acceptable extensions: jpeg, png)</h3>
+            <h3>*jpeg files will yield less accurate results! png files are preferred.</h3>
             <Dropzone className="dropzone" accept="image/png, image/jpeg, application/pdf" onDrop={this.handleUpload}>
             <p>
               Drop Files Here
