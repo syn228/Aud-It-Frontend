@@ -47,13 +47,6 @@ export function onDrop(files, currentUserId){
         .finally(resultOrError => dispatch(successfulUpload(false, files[i], textObject)) ) 
     }
   }
-
-
-
-  // return  {
-  //   type: "FILE_UPLOAD",
-  //   files: files
-  // }
 }
 
 export function persistUser(userId){

@@ -11,7 +11,7 @@ import Registration from "./components/Registration"
 import { Route, BrowserRouter as Router, withRouter } from 'react-router-dom';
 import { connect } from 'react-redux'
 import { persistUser } from './actions'
-
+import WebcamCapture from './components/WebcamCapture';
 
 class App extends Component {
  
@@ -40,6 +40,7 @@ class App extends Component {
               <Route exact path="/upload" component={(props) => <Upload {...props} />} />
               <Route exact path="/files" component={(props) => <Files {...props} />} />
               <Route exact path="/logout" component={(props) => <Logout {...props} />} />
+              <Route exact path="/capture" component={(props) => <WebcamCapture {...props} />} />
             </Fragment>
           :
             <Fragment>
