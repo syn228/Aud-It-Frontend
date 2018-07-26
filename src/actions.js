@@ -24,12 +24,14 @@ export function successfulUpload(bool, file, textObject){
   }
 }
 
-export function initiateLoading(bool, currentFileNumber, totalFiles){
+export function initiateLoading(bool, currentFileNumber, totalFiles, message){
   return {
     type: "INITIATE_LOADING",
     loading: bool,
     fileNumber: currentFileNumber,
     totalFiles: totalFiles,
+    loadingMessage: message.status,
+    loadingProgress: message.progress,
   }
 }
 
@@ -39,7 +41,7 @@ export function onDrop(files, currentUserId){
       let textObject
       Adapter.postToAws(files[i])
       Tesseract.recognize(files[i])
-        .progress(message => dispatch(initiateLoading(true, i+1, files.length)))
+        .progress(message => dispatch(initiateLoading(true, i+1, files.length, message)))
         .catch(err => console.log(err))
         .then(result => textObject = result )
         .finally(resultOrError => dispatch(successfulUpload(false, files[i], textObject)) ) 

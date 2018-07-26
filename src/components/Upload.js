@@ -5,7 +5,7 @@ import { onDrop } from "../actions"
 
 class Upload extends React.Component {
   handleUpload = (files) => {
-        this.props.onDrop(files, this.props.currentUserId)
+    this.props.onDrop(files, this.props.currentUserId)
   }
   
   render() {
@@ -19,15 +19,15 @@ class Upload extends React.Component {
             <h2 className="directions">Click or drag files into the box below to convert your document into an audio file!</h2>
             <h3>(Acceptable extensions: jpeg, png)</h3>
             <Dropzone className="dropzone" accept="image/png, image/jpeg, application/pdf" onDrop={this.handleUpload}>
-            <p>
-              Drop Files Here
-            </p>
-            <p>
-              or
-            </p>
-            <button>
-              Select File
-            </button>
+              <p>
+                Drop Files Here
+              </p>
+              <p>
+                or
+              </p>
+              <button>
+                Select Files
+              </button>
             </Dropzone>
           </div>
           <aside>
@@ -43,8 +43,12 @@ class Upload extends React.Component {
     else {
       return (
         <div>
-        <div className="loader"/>
-        <h3>Loading {this.props.fileNumber}/{this.props.totalFiles} Files</h3>
+          <div className="loadingDisplay">
+            <h3>Converting {this.props.fileNumber}/{this.props.totalFiles} Files</h3>
+            <h3>{this.props.loadingMessage}</h3>
+            <h3>{parseFloat(Math.round(this.props.loadingProgress * 100))}%</h3>
+          </div>
+          <div className="loader"/>
         </div>
       )
     }
@@ -57,12 +61,9 @@ function mapStateToProps(state){
   loading: state.loading,
   fileNumber: state.fileNumber,
   totalFiles: state.totalFiles,
+  loadingMessage: state.loadingMessage,
+  loadingProgress: state.loadingProgress
   }
 }
 
-// function mapDispatchToProps(dispatch){
-//   return {
-//       onDrop: (files) => dispatch(onDrop(files))
-//   }
-// }
 export default connect(mapStateToProps, { onDrop })(Upload);

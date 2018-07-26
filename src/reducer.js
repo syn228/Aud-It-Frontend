@@ -12,13 +12,15 @@ const defaultState = {
   loading: false,
   fileNumber: "",
   totalFiles: "",
+  loadingMessage: "",
+  loadingProgress: "",
 }
 
 function reducer(state=defaultState, action){
   switch(action.type){
     case "INITIATE_LOADING":
       console.log("loading!")
-      return {...state, loading: action.loading, fileNumber: action.fileNumber, totalFiles: action.totalFiles }
+      return {...state, loading: action.loading, fileNumber: action.fileNumber, totalFiles: action.totalFiles, loadingMessage: action.loadingMessage, loadingProgress: action.loadingProgress }
     case "FILE_CONVERSION":
       return {...state, loadingMessage: action.loadingMessage}
     case "PERSIST_USER":
