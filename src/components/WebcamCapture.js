@@ -5,6 +5,10 @@ import { connect } from 'react-redux'
 import { onDrop } from "../actions"
 
 class WebcamCapture extends Component {
+  state = {
+    loading: false
+  }
+
   setRef = (webcam) => {
     this.webcam = webcam;
   }
@@ -18,9 +22,17 @@ class WebcamCapture extends Component {
     return new File([u8arr], filename, {type:mime});
   }
 
-
- 
   capture = () => {
+    this.setState({
+      loading: true
+    }, () => {
+      setTimeout(() =>
+        this.setState({
+          loading: false
+        }),
+      3000)
+    })
+    
     const imageSrc = this.webcam.getScreenshot(); 
     let file = []   
     file = [...file, this.dataURLtoFile(imageSrc, "imageCapture")] 
@@ -28,12 +40,13 @@ class WebcamCapture extends Component {
   }
  
   render() {
+    const {loading} = this.state
     const videoConstraints = {
       width: 720,
       height: 1280,
       facingMode: 'user',
     };
-    if (!this.props.loading){
+    if (!loading){
     return (
       <div>
         <Webcam
@@ -50,14 +63,7 @@ class WebcamCapture extends Component {
   }
   else {
     return (
-      <div>
-        <div className="loadingDisplay">
-          <h3>Converting {this.props.fileNumber}/{this.props.totalFiles} Files</h3>
-          <h3>{this.props.loadingMessage}</h3>
-          <h3>{parseFloat(Math.round(this.props.loadingProgress * 100))}%</h3>
-        </div>
         <div className="loader"/>
-      </div>
     )
   }
   }

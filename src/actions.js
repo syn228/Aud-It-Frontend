@@ -39,12 +39,7 @@ export function onDrop(files, currentUserId){
   return (dispatch) => {
     for (let i=0; i < files.length; i++){
       let textObject
-      Adapter.postToAws(files[i])
-      Tesseract.recognize(files[i])
-        .progress(message => dispatch(initiateLoading(true, i+1, files.length, message)))
-        .catch(err => console.log(err))
-        .then(result => textObject = result )
-        .finally(resultOrError => dispatch(successfulUpload(false, files[i], textObject)) ) 
+      Adapter.postToAws(files[i], currentUserId)
     }
   }
 }

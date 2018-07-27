@@ -1,0 +1,12 @@
+{
+  "type": "service_account",
+  "project_id": "aud-it-pictures-211513",
+  "private_key_id": "cc2dc06156520572d7e83c3fe3a9a02cc14feaf5",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQDfz12sR+H+eUYa\npKDSe5+Im0Bp8NZF6ux9rcVh/aAcUJ7pLwNGMQwoMTgIVFWZ+fk6mpMvZCJGQs2b\nlrZPW5nPeAkqv1mow8z8M/AJ/svJJ9l11Fgtt6Q3ojvwnXvZm5WC5doOmCYBfKOH\ns7ugZvkjS/KR36ERKi0Xv0KvjlZR/uC3EHclqH2Z/TeejBkaVNtU+2cXEpJ3iYMR\nwlIjbdLBXbd/OC3LAK0+Of3zV9zcBAbuzd3WE4Zs6xGcTjqXEnIkxVlx0BZNs+W/\ndbWpJW14HnkJCqYf/RIquAmrMNayzJCkDUKXaikPbu+hTZQsr42kYbcJrVoZbXSD\nl1yOzHOHAgMBAAECggEAaaDSSnWQlQwCiJ+LIVvkEtKHB5j5X/08iSJCxnkvoD1y\nioY8KtwKK0vzcIbw8Z9XP4/liFffjz6HEHgEahbG1HKIDQtLUwm6DIusreL5peHv\nUZua1FTYJcOlO23wHmc+HI3DqOCpC0maWnj6w/zld4GoJa2gNFwt9Qe4/ucUGVTq\nI3tT8vZ7e/qXTFYBHX9f60NnJz6z9eo4YbOTPuEKU4CQLQV0Ed3nn2xNGbAKuyrZ\nCxj1tVHjttOQqKjLd6oVXrROy87kJLXOEeSa1v5FkCM3PKHnIvG5i7x99b6r6lV3\nmVVmfx1gX9Q9ktZTsLmpWyCT/6NcqmZk0HhkXSDLyQKBgQDvurpXrdohDz/5Lce+\nykfmzdXoz1WnlcQpOjtgWeVfSp5sFFWpW6GHUjjO9vYtBh8YmukX2PaJ9b4nqrBL\nzs/EMh3X43GDq4aeVjtJYNp4hyTde3Gf/aOuSvn6XTK2JRgWEzLYCYR0LnWYXVon\nGRL4ODg4wju4xqv//Njc7tmy3wKBgQDvAApdCywA7JnzOjFOfmEKzaTgE1cBevHf\nYKZ/4XEZ2j/rilsJXPoi3oba2qc3HGsvLOxT0Zb914Al1fHGG26KiLIQGnhprQHb\ng/CHAswXoR6xKzRCDdUkadAMIfwcSGKYNt6p3b0fSzMGjRrH+4DKRT3oEa0Lpp0p\nEcxEn+88WQKBgFmRZKn5tLQBZJ+O8UBhh3e+lBuFy7Tvifj1XtXjAIYX9RTgjBjY\nuYM7vynkr5mm3dttlYVpdMOa408iwPex74KYTvooanMNlSB3i3MhEr9Rjv6Jbqye\nMZefP8LBK39OYK9uwOJiu/BEo38n8dUF00aWirr6JyIkaIMeT1BMlV31AoGBAK8g\nYnenNgk/VdeKLpMLu+QEp+mhgkGNayp5Ucem1A9Tgz7+1JJZ1Ng0IrC/Q4P4iPm6\nezk3/OHoRPh0eoLlmuxcGc3+93jH0vKdDWSAwjgWUb0UoWg9Zo8WEeKyDGBVEhnj\nKulhl7EUk0EbqCIdwlN0xVYFjb1ZyxNK/VjTsKORAoGADDfDpt5firnlwETWTMDm\n7IrX3nrdjPPIIN/MUjidWUrT6RImAdMH00brF6y13mHBV9jtU+s49PSJWVYMvnel\nFtJPt56lMi3KfKXcnxowCvbFqL9JDNjSra7Tz/pVMXKeXZVh9/X8lsdyf6y5yjo6\nEpJEAks159jxGOZCJ02IA34=\n-----END PRIVATE KEY-----\n",
+  "client_email": "aud-it-pictures@aud-it-pictures-211513.iam.gserviceaccount.com",
+  "client_id": "110023977682194585823",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://accounts.google.com/o/oauth2/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/aud-it-pictures%40aud-it-pictures-211513.iam.gserviceaccount.com"
+}

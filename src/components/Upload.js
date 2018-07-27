@@ -4,12 +4,26 @@ import { connect } from "react-redux"
 import { onDrop } from "../actions"
 
 class Upload extends React.Component {
+  state = {
+    loading: false
+  }
+
   handleUpload = (files) => {
+    this.setState({
+      loading: true
+    }, () => {
+      setTimeout(() => 
+        this.setState({
+          loading: false
+        }),
+      3000)
+    })
     this.props.onDrop(files, this.props.currentUserId)
   }
   
   render() {
-    if (!this.props.loading){
+    const {loading} = this.state
+    if (!loading){
       return (
         <section>
           <div >
@@ -43,14 +57,7 @@ class Upload extends React.Component {
     }
     else {
       return (
-        <div>
-          <div className="loadingDisplay">
-            <h3>Converting {this.props.fileNumber}/{this.props.totalFiles} Files</h3>
-            <h3>{this.props.loadingMessage}</h3>
-            <h3>{parseFloat(Math.round(this.props.loadingProgress * 100))}%</h3>
-          </div>
           <div className="loader"/>
-        </div>
       )
     }
   }
