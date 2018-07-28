@@ -9,7 +9,7 @@ class Adapter {
         localStorage.removeItem('token');
     }
 
-    static createFileReader(result) {
+    static textDetectionRequest(imageURL) {
         let body = {
             "requests":[
               {
@@ -20,40 +20,38 @@ class Adapter {
                     }
                 ],
                 "image":{
-                  "source":{"imageUri": result}
+                  "source":{"imageUri": imageURL}
                 }
               }
             ]
           }
       
-          return {
+        return {
             method: "POST",
             headers: {
               "Content-Type": "application/json; charset=utf-8"
             },
             // mode: "cors",
             body: JSON.stringify(body)
-          }
+        }
     }
 
     static googleVision(data, currentUserId) {
         const URL = `https://vision.googleapis.com/v1/images:annotate?key=${API_KEY}`
 
-        let config = this.createFileReader(data.path)
+        let config = this.textDetectionRequest(data.path)
 
         fetch(URL, config)
             .then(r => r.json(r))
-            .then(d => this.handleData(d, currentUserId, data))
+            .then(json => this.postFiles(json, currentUserId, data))
     }
 
-    static handleData(d, currentUserId, data) {
-        let parsedText = d.responses[0].fullTextAnnotation.text
+    static postFiles(json, currentUserId, data) {
+        let convertedText = json.responses[0].fullTextAnnotation.text
         let body = {
             name: `${data.name}-${data.id}`,
             user_id: currentUserId,
-            extension: "image/png",
-            text: parsedText,
-            confidence: 80,
+            text: convertedText,
         }
         fetch('http://localhost:4000/convertedfiles/', {
             method: "POST",
@@ -63,7 +61,6 @@ class Adapter {
             },
             body: JSON.stringify(body)
         })
-
     }
 
     static postToAws(file, currentUserId) {
@@ -104,26 +101,7 @@ class Adapter {
       })
     }
 
-    static postFiles(file, currentUserId, textObject) {   
-        console.log("Conversion finished!")
-            let body = {
-                name: file.name,
-                user_id: currentUserId,
-                extension: file.type,
-                size: file.size,
-                text: textObject.text,
-                confidence: textObject.confidence
-            }
-            fetch(`http://localhost:4000/convertedfiles/`, {
-                method: 'POST',
-                headers: {
-                    "Content-Type": 'application/json',
-                    "Data-Type": "application/json"
-                },
-                body: JSON.stringify(body)
-            })
-            
-    }
+    
 
     static getFiles(){
         return fetch(`http://localhost:4000/convertedfiles/`)

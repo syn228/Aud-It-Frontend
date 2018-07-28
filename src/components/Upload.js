@@ -32,7 +32,6 @@ class Upload extends React.Component {
             <img className="audiorep" src="http://pngimg.com/uploads/headphones/headphones_PNG7623.png" alt=""/>
             <h2 className="directions">Click or drag files into the box below to convert your document into an audio file!</h2>
             <h3>(Acceptable extensions: jpeg, png)</h3>
-            <h3>*jpeg files will yield less accurate results! png files are preferred.</h3>
             <Dropzone className="dropzone" accept="image/png, image/jpeg, application/pdf" onDrop={this.handleUpload}>
               <p>
                 Drop Files Here
@@ -65,12 +64,6 @@ class Upload extends React.Component {
 function mapStateToProps(state){
   return {
   currentUserId: state.currentUserId,
-  files: state.files,
-  loading: state.loading,
-  fileNumber: state.fileNumber,
-  totalFiles: state.totalFiles,
-  loadingMessage: state.loadingMessage,
-  loadingProgress: state.loadingProgress
   }
 }
 

@@ -56,7 +56,7 @@ class WebcamCapture extends Component {
           screenshotFormat="image/png"
           width={350}
           videoConstraints={videoConstraints}
-        />
+        /><br/>
         <button onClick={this.capture}>Capture and Convert Photo</button>
       </div>
     );
