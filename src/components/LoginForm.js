@@ -2,24 +2,61 @@ import React, { Component } from 'react';
 import { connect } from "react-redux"
 import { logInChange, persistUser } from "../actions"
 import Adapter from "./Adapter"
+import { Button, Form, Grid, Header, Image, Message, Segment } from 'semantic-ui-react'
+import homelogo from '../assets/homelogo.png'
 
 class LoginForm extends Component {
-    handleSubmit = (event) => {
+    handleClick = (event) => {
         event.preventDefault();
         Adapter.postSession(this.props.username, this.props.password, this.props.persistUser, this.props.history)
     }
 
     render() {
         return (
-            <div className="information">
-                Please Sign in:
-            <form onChange={this.props.handleChange} onSubmit={this.handleSubmit} className="login">
-                <input type="text" placeholder="Username" id="username" value={this.props.username}/><br/>  
-                <input type="password" placeholder="password" id="password" value={this.props.password}/><br/>  
-                <input type="submit" value="Sign In"/>
-            </form>
-            </div>
-        );
+
+            <div className='login-form'>
+    {/*
+      Heads up! The styles below are necessary for the correct render of this example.
+      You can do same with CSS, the main idea is that all the elements up to the `Grid`
+      below must have a height of 100%.
+    */}
+    <style>{`
+      body > div,
+      body > div > div,
+      body > div > div > div.login-form {
+        height: 100%;
+      }
+    `}</style>
+    <Grid textAlign='center' style={{ height: '100%' }} verticalAlign='middle'>
+      <Grid.Column style={{ maxWidth: 450 }}>
+        <Header as='h2' color='blue' textAlign='center'>
+          <Image src={homelogo} /><br/> Log-in to your account
+        </Header>
+        <Form onChange={this.props.handleChange}  size='large'>
+          <Segment stacked>
+            <Form.Input value={this.props.username} type="text" id="username" fluid icon='user' iconPosition='left' placeholder='Username' />
+            <Form.Input
+              fluid
+              icon='lock'
+              iconPosition='left'
+              id="password"
+              value={this.props.password}
+              placeholder='Password'
+              type='password'
+            />
+
+            <Button onClick={this.handleClick} color='blue' fluid size='large'>
+              Login
+            </Button>
+          </Segment>
+        </Form>
+        <Message>
+          Don't have an account? <a href='/register'>Register</a>
+        </Message>
+      </Grid.Column>
+    </Grid>
+  </div>
+        )
     }
 }
 

@@ -9,12 +9,12 @@ import reducer from "./reducer"
 import { Provider } from "react-redux"
 import VoicePlayer from './VoicePlayer'
 import thunkMiddleware from 'redux-thunk'
-
+import 'semantic-ui-css/semantic.min.css';
 
 const store = createStore(reducer, applyMiddleware(thunkMiddleware))
 
 
-ReactDOM.render(<Provider store={store}><Router><App > <VoicePlayer
+ReactDOM.render(<Provider store={store}><Router><App className="backgroundImg"> <VoicePlayer
   play
   text="React voice player demonstration"
 />,</App></Router></Provider>, document.getElementById('root'));
