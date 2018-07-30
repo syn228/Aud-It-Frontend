@@ -6,7 +6,7 @@ import { Button, Form, Grid, Header, Image, Message, Segment } from 'semantic-ui
 import homelogo from '../assets/homelogo.png'
 
 class LoginForm extends Component {
-    handleClick = (event) => {
+    handleSubmit = (event) => {
         event.preventDefault();
         Adapter.postSession(this.props.username, this.props.password, this.props.persistUser, this.props.history)
     }
@@ -15,11 +15,6 @@ class LoginForm extends Component {
         return (
 
             <div className='login-form'>
-    {/*
-      Heads up! The styles below are necessary for the correct render of this example.
-      You can do same with CSS, the main idea is that all the elements up to the `Grid`
-      below must have a height of 100%.
-    */}
     <style>{`
       body > div,
       body > div > div,
@@ -32,7 +27,7 @@ class LoginForm extends Component {
         <Header as='h2' color='blue' textAlign='center'>
           <Image src={homelogo} /><br/> Log-in to your account
         </Header>
-        <Form onChange={this.props.handleChange}  size='large'>
+        <Form onSubmit={this.handleSubmit} onChange={this.props.handleChange}  size='large'>
           <Segment stacked>
             <Form.Input value={this.props.username} type="text" id="username" fluid icon='user' iconPosition='left' placeholder='Username' />
             <Form.Input
@@ -45,7 +40,7 @@ class LoginForm extends Component {
               type='password'
             />
 
-            <Button onClick={this.handleClick} color='blue' fluid size='large'>
+            <Button color='blue' fluid size='large'>
               Login
             </Button>
           </Segment>

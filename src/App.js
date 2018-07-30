@@ -32,7 +32,7 @@ class App extends Component {
     return (
       <Router>
       <div className="App">
-        <Navbar />
+        <Navbar history={this.props.history}/>
 
         <Route exact path="/home" component={Homepage} />
         { Adapter.isLoggedIn() ?

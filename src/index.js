@@ -14,8 +14,12 @@ import 'semantic-ui-css/semantic.min.css';
 const store = createStore(reducer, applyMiddleware(thunkMiddleware))
 
 
-ReactDOM.render(<Provider store={store}><Router><App className="backgroundImg"> <VoicePlayer
-  play
-  text="React voice player demonstration"
-/>,</App></Router></Provider>, document.getElementById('root'));
+ReactDOM.render(
+<Provider store={store}>
+<Router>
+  <App>
+    <VoicePlayer/>
+  </App>
+</Router>
+</Provider>, document.getElementById('root'));
 registerServiceWorker();

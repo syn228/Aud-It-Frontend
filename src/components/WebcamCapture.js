@@ -54,7 +54,7 @@ class WebcamCapture extends Component {
     if (!loading){
     return (
       <div>
-        <Webcam
+        <Webcam style={{marginTop: '50px'}}
           audio={false}
           height={350}
           ref={this.setRef}

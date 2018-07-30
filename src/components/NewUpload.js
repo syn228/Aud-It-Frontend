@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import UUID from "uuid"
 import VoicePlayer from '../VoicePlayer';
 import { connect } from "react-redux"
+import { Button, Card, Image } from 'semantic-ui-react'
 
 class NewUpload extends Component {
   state = {
@@ -60,21 +61,32 @@ class NewUpload extends Component {
   render() {
     return (
       <div>
-        <div key={UUID()}>
-          <h3>{this.props.file.name}</h3>
-            <p> 
-              🔊 <br/>
-              <button value={this.props.file.name} onClick={this.togglePlay}>{this.state.button}</button><br/>
-              <button onClick={this.cancelAudio}>Cancel Audio</button>
-            </p>
-          </div>
+      <Card className="ui container center aligned">
+      <Card.Content>
+        <Image floated='right' size='mini' src='https://www.freeiconspng.com/uploads/volume-icon-31.png' />
+        <Card.Header>{this.props.file.name}</Card.Header>
+        <Card.Description>
+          {this.props.file.size} bytes
+        </Card.Description>
+      </Card.Content>
+      <Card.Content extra>
+        <div className='ui two buttons'>
+          <Button value={this.props.file.name} onClick={this.togglePlay} basic color='green'>
+            {this.state.button}
+          </Button>
+          <Button onClick={this.cancelAudio} basic color='red'>
+            Cancel Audio
+          </Button>
+        </div>
+      </Card.Content>
+    </Card>
         {this.state.start === true 
         ? 
           <VoicePlayer onEnd={this.onEnd} manual={this.cancelAudio} play={this.state.start} pause={this.state.pause} text={this.state.audiotext}/>
         : null
         } 
       </div>
-    );
+    )
   }
 }
 function mapStateToProps(state){
