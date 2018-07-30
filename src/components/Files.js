@@ -25,7 +25,7 @@ class Files extends Component {
         {this.state.files.length > 0 
         ?
           this.state.files.map(file => 
-            <File key={UUID()} files={this.state.files} file={file} togglePlay={this.togglePlay}/>
+            <File key={UUID()} files={this.state.files} file={file}/>
           )
         : 
           <h3>You don't have any files. Go convert them first!</h3>}

@@ -1,11 +1,17 @@
 import React, { Component } from 'react';
 import Webcam from "react-webcam"
 import { connect } from 'react-redux'
-import { onDrop } from "../actions"
+import { onDrop, clearData } from "../actions"
+import UUID from "uuid"
+import NewCapture from './NewCapture'
 
 class WebcamCapture extends Component {
   state = {
     loading: false
+  }
+
+  componentDidMount() {
+    this.props.clearData()
   }
 
   setRef = (webcam) => {
@@ -57,6 +63,14 @@ class WebcamCapture extends Component {
           videoConstraints={videoConstraints}
         /><br/>
         <button onClick={this.capture}>Capture and Convert Photo</button>
+        {
+          this.props.latestUpload.length !== 0 
+          ? 
+          this.props.latestUpload.map(file => 
+            <NewCapture key={UUID()} file={file}/>
+          )
+          : null
+        }
       </div>
     );
   }
@@ -70,13 +84,8 @@ class WebcamCapture extends Component {
 function mapStateToProps(state){
   return {
   currentUserId: state.currentUserId,
-  files: state.files,
-  loading: state.loading,
-  fileNumber: state.fileNumber,
-  totalFiles: state.totalFiles,
-  loadingMessage: state.loadingMessage,
-  loadingProgress: state.loadingProgress
+  latestUpload: state.latestUpload,
   }
 }
 
-export default connect(mapStateToProps, { onDrop })(WebcamCapture);
+export default connect(mapStateToProps, { onDrop, clearData })(WebcamCapture);

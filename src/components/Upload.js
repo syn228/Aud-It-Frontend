@@ -1,12 +1,23 @@
 import Dropzone from 'react-dropzone'
 import React from 'react'
 import { connect } from "react-redux"
-import { onDrop } from "../actions"
+import { onDrop, clearData } from "../actions"
+import NewUpload from './NewUpload';
+import UUID from 'uuid'
 
 class Upload extends React.Component {
   state = {
-    loading: false
+    loading: false,
+    start: false,
+    pause: false,
+    button: "Play Audio",
+    audiotext: ""
   }
+
+  componentDidMount() {
+    this.props.clearData()
+  }
+  
 
   handleUpload = (files) => {
     this.setState({
@@ -22,6 +33,7 @@ class Upload extends React.Component {
   }
   
   render() {
+    console.log(this.props.latestUpload)
     const {loading} = this.state
     if (!loading){
       return (
@@ -47,7 +59,12 @@ class Upload extends React.Component {
           <aside>
             <ul>
               {
-                /*Insert process here*/
+                this.props.latestUpload.length !== 0 
+                ? 
+                this.props.latestUpload.map(file => 
+                  <NewUpload key={UUID()} file={file}/>
+                )
+                : null
               }
             </ul>
           </aside>
@@ -64,7 +81,8 @@ class Upload extends React.Component {
 function mapStateToProps(state){
   return {
   currentUserId: state.currentUserId,
+  latestUpload: state.latestUpload
   }
 }
 
-export default connect(mapStateToProps, { onDrop })(Upload);
+export default connect(mapStateToProps, { onDrop, clearData })(Upload);

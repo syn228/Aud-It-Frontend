@@ -41,19 +41,19 @@ class Adapter {
 
         let config = this.textDetectionRequest(data.path)
 
-        fetch(URL, config)
-            .then(r => r.json(r))
-            .then(json => this.postFiles(json, currentUserId, data))
+        return fetch(URL, config)
+        .then(r => r.json(r))
     }
 
     static postFiles(json, currentUserId, data) {
         let convertedText = json.responses[0].fullTextAnnotation.text
         let body = {
-            name: `${data.name}-${data.id}`,
+            name: data.name,
+            size: data.size,
             user_id: currentUserId,
             text: convertedText,
         }
-        fetch('http://localhost:4000/convertedfiles/', {
+        return fetch('http://localhost:4000/convertedfiles/', {
             method: "POST",
             headers: {
                 "Content-Type": 'application/json',
@@ -69,13 +69,11 @@ class Adapter {
         formData.append("name", file.name)
         formData.append("attachment", file)
 
-        fetch("http://localhost:4000/uploads/", {
+        return fetch("http://localhost:4000/uploads/", {
         method: 'POST',
         body: formData
         })
         .then(r => r.json())
-        .then (json =>
-        this.googleVision(json, currentUserId))
     }
 
     static postSession(username, password, persistUser, history) {
