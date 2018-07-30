@@ -61,13 +61,11 @@ class File extends Component {
       <div>
         <div key={UUID()}>
           <h3>{this.props.file.name}</h3>
-            <li> 
-              <strong>Size</strong>: {this.props.file.size} bytes <br/> 
-              <strong>Conversion Confidence</strong>: {this.props.file.confidence} <br/>
+            <p> 
               🔊 <br/>
               <button value={this.props.file.name} onClick={this.togglePlay}>{this.state.button}</button><br/>
               <button onClick={this.cancelAudio}>Cancel Audio</button>
-            </li>
+            </p>
           </div>
         {this.state.start === true 
         ? 

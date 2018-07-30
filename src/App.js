@@ -34,7 +34,7 @@ class App extends Component {
       <div className="App">
         <Navbar />
 
-        <Route exact path="/" component={Homepage} />
+        <Route exact path="/home" component={Homepage} />
         { Adapter.isLoggedIn() ?
            <Fragment>
               <Route exact path="/upload" component={(props) => <Upload {...props} />} />

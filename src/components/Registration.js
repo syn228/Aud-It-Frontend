@@ -13,25 +13,23 @@ class Registration extends Component {
             first_name: this.props.first_name,
             last_name: this.props.last_name
         }
-    fetch(`http://localhost:4000/users/`, {
-      method: 'POST',
-      headers: {
-        "Content-Type": 'application/json'
-      },
-      body: JSON.stringify(body)
-    })
-      .then(res => res.json())
-      .then(
-          json => {
-        if (json.username){
-        localStorage.setItem('token', json.token);
-        Adapter.postSession(this.props.username, this.props.password, this.props.persistUser)
-        this.props.history.push("/");
-        }
-        else {
-            alert("Something went wrong during your registration. Please try again later.")
-        }
-    })
+        fetch(`http://localhost:4000/users/`, {
+        method: 'POST',
+        headers: {
+            "Content-Type": 'application/json'
+        },
+        body: JSON.stringify(body)
+        })
+        .then(res => res.json())
+        .then(json => {
+            if (json.username){
+                localStorage.setItem('token', json.token);
+                Adapter.postSession(this.props.username, this.props.password, this.props.persistUser, this.props.history)
+            }
+            else {
+                alert("Something went wrong during your registration. Please try again later.")
+            }
+        })
     }
 
     render() {

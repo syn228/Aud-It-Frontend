@@ -6,7 +6,7 @@ import homelogo from '../assets/homelogo.png'
 class Navbar extends Component {
     handleClick = (event) => {  
         Adapter.logout();
-        this.props.history.push("/")
+        this.props.history.push("/home")
     }
     
     render() {
@@ -17,7 +17,7 @@ class Navbar extends Component {
             </div>
                 <div>
                     <header className="nav">
-                    <NavLink className="tabs" exact to="/">Home</NavLink>
+                    <NavLink className="tabs" exact to="/home">Home</NavLink>
                         { Adapter.isLoggedIn() ?
                             <Fragment>
                                 <NavLink className="tabs" exact to="/upload">Upload</NavLink>
@@ -34,7 +34,7 @@ class Navbar extends Component {
                     </header>    
                 </div>
             </div>
-        );
+        )
     }
 }
 

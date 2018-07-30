@@ -4,8 +4,6 @@ import { connect } from 'react-redux'
 import File from './File'
 import UUID from 'uuid'
 
-
-
 class Files extends Component {
   state = {
     files: [],
@@ -16,7 +14,8 @@ class Files extends Component {
     .then(json => this.setState(
       {
         files: json.filter(file => file.user_id === this.props.currentUserId)
-      }))
+      }
+    ))
   }
 
   render() {    

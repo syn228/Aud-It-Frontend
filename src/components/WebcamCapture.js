@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import Webcam from "react-webcam"
-import Adapter from './Adapter'
 import { connect } from 'react-redux'
 import { onDrop } from "../actions"
 

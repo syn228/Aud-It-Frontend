@@ -10,10 +10,6 @@ const defaultState = {
   files: [],
   currentUserId: "",
   loading: false,
-  fileNumber: "",
-  totalFiles: "",
-  loadingMessage: "",
-  loadingProgress: "",
 }
 
 function reducer(state=defaultState, action){

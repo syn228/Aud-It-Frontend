@@ -95,13 +95,11 @@ class Adapter {
             if (json.username) {
             localStorage.setItem('token', json.token);
             persistUser(json.id)
-            history.push("/")
+            history.push("/home")
             }   
             else alert("Your username or password is wrong. Please try again.")
       })
     }
-
-    
 
     static getFiles(){
         return fetch(`http://localhost:4000/convertedfiles/`)
