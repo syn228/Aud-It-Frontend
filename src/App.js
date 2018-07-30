@@ -8,7 +8,7 @@ import Files from './components/Files'
 import Logout from './components/Logout'
 import Adapter from './components/Adapter'
 import Registration from "./components/Registration"
-import { Route, BrowserRouter as Router, withRouter } from 'react-router-dom';
+import { Route, BrowserRouter as Router, withRouter, Switch } from 'react-router-dom';
 import { connect } from 'react-redux'
 import { persistUser } from './actions'
 import WebcamCapture from './components/WebcamCapture';
@@ -21,34 +21,35 @@ class App extends Component {
     }
   }
 
+  componentDidUpdate(prevProps, prevState) {
+    if (localStorage.token !== undefined){
+      this.parseJwt(localStorage.token)
+    }   
+  }
+  
+
   parseJwt (token) {
     var base64Url = token.split('.')[1];
     let decodedPayload = JSON.parse(window.atob(base64Url))
     this.props.persistUser(decodedPayload.id)
   };
 
-
+// for certain routes, if you are not logged in an you try it access it, give them the 402 status code.
   render() {
     return (
       <Router>
       <div className="App">
         <Navbar history={this.props.history}/>
-
+        
         <Route exact path="/home" component={Homepage} />
-        { Adapter.isLoggedIn() ?
-           <Fragment>
+           <Switch>
               <Route exact path="/upload" component={(props) => <Upload {...props} />} />
               <Route exact path="/files" component={(props) => <Files {...props} />} />
-              <Route exact path="/logout" component={(props) => <Logout {...props} />} />
+              <Route exact path="/home" component={(props) => <Logout {...props} />} />
               <Route exact path="/capture" component={(props) => <WebcamCapture {...props} />} />
-            </Fragment>
-          :
-            <Fragment>
               <Route exact path="/login" component={(props) => <LoginForm {...props} />} />
               <Route exact path="/register" component={(props) => <Registration {...props} />} />
-            </Fragment>
-        }
-        
+            </Switch>
       </div>
       </Router>
     );

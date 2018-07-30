@@ -9,6 +9,7 @@ class Navbar extends Component {
     state = {
     
     }
+    
     handleClick = (event) => {  
         Adapter.logout();
     }
