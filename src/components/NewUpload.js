@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import UUID from "uuid"
 import VoicePlayer from '../VoicePlayer';
 import { connect } from "react-redux"
-import { Button, Card, Image } from 'semantic-ui-react'
+import { Button, Card, Image, Message } from 'semantic-ui-react'
 
 class NewUpload extends Component {
   state = {
@@ -12,9 +12,17 @@ class NewUpload extends Component {
     audiotext: ""
   }
 
+  shouldComponentUpdate(nextProps, nextState) {
+    if (nextState.start !== this.state.start || nextState.pause !== this.state.pause) {
+      return true
+    }
+      return false
+  }
+  
+
   togglePlay = (event) => {
     const match = this.props.latestUpload.find( file => file.name === event.target.value)
-    console.log(match)
+    if (match.text !== ""){
     this.setState({
       audiotext: match.text,
     }, () => {
@@ -32,6 +40,8 @@ class NewUpload extends Component {
           this.setState({pause: false, button: "Pause Audio"}) 
             }  
       });
+    }
+    null
     }
  
 
@@ -61,7 +71,7 @@ class NewUpload extends Component {
   render() {
     return (
       <div>
-      <Card className="ui container center aligned">
+      <Card style={{right: '10px' }}className="ui container center aligned">
       <Card.Content>
         <Image floated='right' size='mini' src='https://www.freeiconspng.com/uploads/volume-icon-31.png' />
         <Card.Header>{this.props.file.name}</Card.Header>
@@ -80,6 +90,14 @@ class NewUpload extends Component {
         </div>
       </Card.Content>
     </Card>
+    <Message className="upload-message">
+    <Message.Header>Detected Text:</Message.Header>
+    {this.props.file.text !== "" ? 
+      <Message compact>{this.props.file.text}</Message>
+    :
+    <Message compact>We could not find any text on the image you uploaded.</Message>
+    }
+   </Message>
         {this.state.start === true 
         ? 
           <VoicePlayer onEnd={this.onEnd} manual={this.cancelAudio} play={this.state.start} pause={this.state.pause} text={this.state.audiotext}/>

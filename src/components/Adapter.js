@@ -46,7 +46,13 @@ class Adapter {
     }
 
     static postFiles(json, currentUserId, data) {
-        let convertedText = json.responses[0].fullTextAnnotation.text
+        let convertedText
+        if (json.responses[0].fullTextAnnotation !== undefined){
+         convertedText = json.responses[0].fullTextAnnotation.text
+        }
+        else {
+            convertedText = ""
+        }
         let body = {
             name: data.name,
             size: data.size,

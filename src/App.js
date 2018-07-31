@@ -38,21 +38,20 @@ class App extends Component {
   render() {
     return (
       <Router>
-      <div className="App">
+        <div className="App">
         <Navbar history={this.props.history}/>
-        
-        <Route exact path="/home" component={Homepage} />
-           <Switch>
-              <Route exact path="/upload" component={(props) => <Upload {...props} />} />
-              <Route exact path="/files" component={(props) => <Files {...props} />} />
-              <Route exact path="/home" component={(props) => <Logout {...props} />} />
-              <Route exact path="/capture" component={(props) => <WebcamCapture {...props} />} />
-              <Route exact path="/login" component={(props) => <LoginForm {...props} />} />
-              <Route exact path="/register" component={(props) => <Registration {...props} />} />
-            </Switch>
-      </div>
+        <Switch>
+          <Route exact path="/home" component={Homepage} />   
+          <Route exact path="/upload" component={(props) => <Upload {...props} />} />
+          <Route exact path="/files" component={(props) => <Files {...props} />} />
+          <Route exact path="/home" component={(props) => <Logout {...props} />} />
+          <Route exact path="/capture" component={(props) => <WebcamCapture {...props} />} />
+          <Route exact path="/login" component={(props) => <LoginForm {...props} />} />
+          <Route exact path="/register" component={(props) => <Registration {...props} />} />
+        </Switch>
+        </div>
       </Router>
-    );
+    )
   }
 }
 

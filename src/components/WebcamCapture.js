@@ -4,10 +4,12 @@ import { connect } from 'react-redux'
 import { onDrop, clearData } from "../actions"
 import UUID from "uuid"
 import NewCapture from './NewCapture'
+import { Grid, Transition, Image, Message, Icon } from 'semantic-ui-react'
 
 class WebcamCapture extends Component {
   state = {
-    loading: false
+    loading: false,
+    visible: false
   }
 
   componentDidMount() {
@@ -29,11 +31,13 @@ class WebcamCapture extends Component {
 
   capture = () => {
     this.setState({
-      loading: true
+      loading: true,
+      visible: true
     }, () => {
       setTimeout(() =>
         this.setState({
-          loading: false
+          loading: false,
+          visible: false
         }),
       3000)
     })
@@ -53,7 +57,7 @@ class WebcamCapture extends Component {
     };
     if (!loading){
     return (
-      <div>
+      <div className="backgroundImg">
         <Webcam style={{marginTop: '50px'}}
           audio={false}
           height={350}
@@ -61,8 +65,8 @@ class WebcamCapture extends Component {
           screenshotFormat="image/png"
           width={350}
           videoConstraints={videoConstraints}
-        /><br/>
-        <button onClick={this.capture}>Capture and Convert Photo</button>
+        /><br/><br/>
+        <button onClick={this.capture}>Capture and Convert Photo</button><br/>
         {
           this.props.latestUpload.length !== 0 
           ? 
@@ -76,7 +80,20 @@ class WebcamCapture extends Component {
   }
   else {
     return (
-        <div className="loader"/>
+      <div className="loader">
+        <Message icon>
+        <Icon name='circle notched' loading />
+        <Message.Content>
+          <Message.Header>Just one second</Message.Header>
+          Detection in Progress
+        </Message.Content>
+      </Message>
+        <Grid.Column>
+          <Transition.Group animation='jiggle' duration={3000}>
+            {this.state.visible && <Image className="capture-animation" centered size='small' src='http://www.free-icons-download.net/images/camera-icon-43654.png' />}
+          </Transition.Group>
+        </Grid.Column>
+      </div>
     )
   }
   }

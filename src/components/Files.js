@@ -20,7 +20,8 @@ class Files extends Component {
 
   render() {    
     return (
-      <div>
+      <div className="backgroundImg">
+        
         <h1>Your Files</h1>
         {this.state.files.length > 0 
         ?
@@ -30,7 +31,7 @@ class Files extends Component {
         : 
           <h3>You don't have any files. Go convert them first!</h3>}
       </div>
-    );
+    )
   }
 }
 function mapStateToProps(state){

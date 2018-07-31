@@ -4,14 +4,12 @@ import { connect } from "react-redux"
 import { onDrop, clearData } from "../actions"
 import NewUpload from './NewUpload';
 import UUID from 'uuid'
+import Animation from './Animation'
+import { Message, Icon } from 'semantic-ui-react'
 
 class Upload extends React.Component {
   state = {
     loading: false,
-    start: false,
-    pause: false,
-    button: "Play Audio",
-    audiotext: ""
   }
 
   componentDidMount() {
@@ -33,27 +31,25 @@ class Upload extends React.Component {
   }
   
   render() {
-    console.log(this.props.latestUpload)
-    const {loading} = this.state
+    const { loading } = this.state
     if (!loading){
       return (
+        <div className="backgroundImg">
         <section>
           <div >
-            <img className="imgrep" src="https://www.ukessays.com/images/services/essay/macbook-sample.png" alt=""/>
-            <img className="arrowrep" src="http://www.transparentpng.com/thumb/arrow/big-right-arrow-icon-png-10.png" alt=""/>
-            <img className="audiorep" src="http://pngimg.com/uploads/headphones/headphones_PNG7623.png" alt=""/>
+            <Animation />
             <h2 className="directions">Click or drag files into the box below to convert your document into an audio file!</h2>
             <h3>(Acceptable extensions: jpeg, png)</h3>
             <Dropzone className="dropzone" accept="image/png, image/jpeg, application/pdf" onDrop={this.handleUpload}>
-              <p>
+              <h4>
                 Drop Files Here
-              </p>
-              <p>
+              </h4>
+              <h4>
                 or
-              </p>
-              <button>
-                Select Files
-              </button>
+              </h4>
+              <div className="ui button">
+              Upload
+              </div>
             </Dropzone>
           </div>
           <aside>
@@ -69,11 +65,20 @@ class Upload extends React.Component {
             </ul>
           </aside>
         </section>
+        </div>
       );
     }
     else {
       return (
-          <div className="loader"/>
+        <div className="loader">
+        <Message icon>
+        <Icon name='circle notched' loading />
+        <Message.Content>
+          <Message.Header>Just one second</Message.Header>
+          Conversion in Progress
+        </Message.Content>
+      </Message>
+      </div>
       )
     }
   }

@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import UUID from "uuid"
 import VoicePlayer from '../VoicePlayer';
 import { connect } from "react-redux"
-import { Button, Card, Image } from 'semantic-ui-react'
+import { Button, Card, Image, Message } from 'semantic-ui-react'
 
 class NewCapture extends Component {
   state = {
@@ -14,7 +14,7 @@ class NewCapture extends Component {
 
   togglePlay = (event) => {
     const match = this.props.latestUpload.find( file => file.name === event.target.value)
-    console.log(match)
+    if (match.text !== ""){
     this.setState({
       audiotext: match.text,
     }, () => {
@@ -31,7 +31,8 @@ class NewCapture extends Component {
             //resume
           this.setState({pause: false, button: "Pause Audio"}) 
             }  
-      });
+        })
+      }
     }
  
 
@@ -80,6 +81,14 @@ class NewCapture extends Component {
         </div>
       </Card.Content>
     </Card>
+    <Message>
+    <Message.Header>Detected Text:</Message.Header>
+    {this.props.file.text !== "" ? 
+      <Message compact>{this.props.file.text}</Message>
+    :
+    <Message compact>We could not find any text to detect.</Message>
+    }
+   </Message>
         {this.state.start === true 
         ? 
           <VoicePlayer onEnd={this.onEnd} manual={this.cancelAudio} play={this.state.start} pause={this.state.pause} text={this.state.audiotext}/>

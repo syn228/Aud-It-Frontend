@@ -11,44 +11,46 @@ class Navbar extends Component {
     }
     
     handleClick = (event) => {  
-        Adapter.logout();
-    }
-
-    handleDropDown = () => {
-        this.props.history.push("/login")
-        this.setState({})
+        switch (event.target.innerText){
+            case "Upload":
+            this.props.history.push("/login")
+            case "Capture":
+            this.props.history.push("/login")
+            case "Log Out":
+            Adapter.logout();
+        }
     }
     
     render() {
         return (
             <div>
-                <div className="logodiv">
-                    <img onClick={this.handleClick} className="logo" src={homelogo} alt=""/>
-                </div>
-            <div>
-                    <header className="nav">
-                    <NavLink className="tabs" exact to="/home">Home</NavLink>
-                        { Adapter.isLoggedIn() ?
-                            <Fragment>
-                                <NavLink className="tabs" exact to="/upload">Upload</NavLink>
-                                <NavLink className="tabs" exact to="/files">My Files</NavLink>
-                                <NavLink className="tabs" exact to="/capture">Capture</NavLink>
-                                <NavLink className="tabs logs" to="/home" onClick={this.handleClick}>Log Out</NavLink>
-                            </Fragment>
-                        :
-                            <Fragment>
-                                <Dropdown item simple text= 'Services'>
-                                    <Dropdown.Menu>
-                                        <Dropdown.Item onClick={this.handleDropDown}>Upload</Dropdown.Item>
-                                        <Dropdown.Item onClick={this.handleDropDown}>Capture</Dropdown.Item>
-                                    </Dropdown.Menu>
-                                </Dropdown>
-                                <NavLink className="tabs logs" exact to="/register">Registration</NavLink>
-                                <NavLink className="tabs logs" exact to="/login">Login</NavLink>
-                            </Fragment>
-                        }
-                    </header>    
-                </div>
+                <header className="ui menu" style={{backgroundColor: "#333"}}>
+                <NavLink style={{color: "white"}} className="item tabs" exact to="/home">Home</NavLink>
+                    { Adapter.isLoggedIn() 
+                    ?
+                        <Fragment>
+                            <NavLink style={{color: "white"}} className="item tabs" exact to="/upload">Upload</NavLink>
+                            <NavLink style={{color: "white"}} className="item tabs" exact to="/files">My Files</NavLink>
+                            <NavLink style={{color: "white"}} className="item tabs" exact to="/capture">Capture</NavLink>
+                            <div className="right item">
+                            <NavLink className="ui button" to="/home" onClick={this.handleClick}>Log Out</NavLink>
+                            </div>
+                        </Fragment>
+                    :
+                        <Fragment>
+                            <Dropdown style={{color: "white"}}className="services" item simple text= 'Services'>
+                                <Dropdown.Menu className="dropdown-menu">
+                                    <Dropdown.Item className="dropdown-item" onClick={this.handleClick}>Upload</Dropdown.Item>
+                                    <Dropdown.Item className="dropdown-item" onClick={this.handleClick}>Capture</Dropdown.Item>
+                                </Dropdown.Menu>
+                            </Dropdown>
+                            <div className="right item">
+                            <NavLink style={{marginRight: '20px'}} className="ui primary button" exact to="/register">Registration</NavLink>
+                            <NavLink style={{marginRight: '5px'}} className="ui button" exact to="/login">Login</NavLink>
+                            </div>
+                        </Fragment>
+                    }
+                </header>    
             </div>
         )
     }
