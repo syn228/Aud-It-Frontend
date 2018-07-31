@@ -13,6 +13,8 @@ import { connect } from 'react-redux'
 import { persistUser } from './actions'
 import WebcamCapture from './components/WebcamCapture';
 
+// const AuthedFiles = withSomeSortofAut(Files);
+
 class App extends Component {
  
   componentDidMount() {
@@ -39,7 +41,7 @@ class App extends Component {
     return (
       <Router>
         <div className="App">
-        <Navbar history={this.props.history}/>
+        <Navbar />
         <Switch>
           <Route exact path="/home" component={Homepage} />   
           <Route exact path="/upload" component={(props) => <Upload {...props} />} />

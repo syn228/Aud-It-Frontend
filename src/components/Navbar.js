@@ -4,6 +4,7 @@ import { Redirect } from 'react-router'
 import Adapter from './Adapter'
 import homelogo from '../assets/homelogo.png'
 import { Container, Dropdown } from 'semantic-ui-react'
+import { withRouter } from 'react-router-dom';
 
 class Navbar extends Component {
     state = {
@@ -14,10 +15,13 @@ class Navbar extends Component {
         switch (event.target.innerText){
             case "Upload":
             this.props.history.push("/login")
+            break;
             case "Capture":
             this.props.history.push("/login")
+            break;
             case "Log Out":
             Adapter.logout();
+            break;
         }
     }
     
@@ -57,4 +61,4 @@ class Navbar extends Component {
 }
 
 
-export default Navbar;
+export default withRouter(Navbar);
