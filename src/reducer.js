@@ -9,6 +9,7 @@ const defaultState = {
   last_name: "",
   files: [],
   currentUserId: "",
+  currentUserName: "",
   loading: false,
   latestUpload: [],
 }
@@ -24,7 +25,7 @@ function reducer(state=defaultState, action){
     case "FILE_CONVERSION":
       return {...state, loadingMessage: action.loadingMessage}
     case "PERSIST_USER":
-      return {...state, currentUserId: action.currentUserId}
+      return {...state, currentUserId: action.currentUserId, currentUserName: action.currentUserName}
     case "LOG_IN_CHANGE":
     if (action.event.target.id === "username"){
       return { ...state, loginUsername: action.event.target.value}

@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import UUID from "uuid"
 import VoicePlayer from '../VoicePlayer';
 import { connect } from "react-redux"
 import { Button, Card, Image, Message } from 'semantic-ui-react'

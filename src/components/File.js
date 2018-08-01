@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import UUID from "uuid"
 import VoicePlayer from '../VoicePlayer';
 import { Button, Card, Image } from 'semantic-ui-react'
 
@@ -17,21 +16,23 @@ class File extends Component {
     this.setState({
       audiotext: match.text,
     }, () => {
-          if (this.state.start === false){
-            //start
-            this.setState({start: true, button: "Pause Audio"}) 
-          }
-          else if (this.state.start === true && this.state.pause === false)
-          //pause
-            {
-              this.setState({pause: true, button: "Resume Audio"})
-            }
-            else {
-            //resume
-          this.setState({pause: false, button: "Pause Audio"}) 
-            }  
-      });
-    }
+      if (this.state.start === false)
+      {
+        //start
+        this.setState({start: true, button: "Pause Audio"}) 
+      }
+      else if (this.state.start === true && this.state.pause === false)
+      {
+        //pause
+        this.setState({pause: true, button: "Resume Audio"})
+      }
+      else 
+      {
+        //resume
+        this.setState({pause: false, button: "Pause Audio"}) 
+      }  
+    })
+  }
  
 
   cancelAudio = () => {
@@ -61,7 +62,7 @@ class File extends Component {
   render() {
     return (
       <div>
-      <Card.Group className="fileCard">
+      <Card.Group className="fileCard transparent">
         <Card>
       <Card.Content>
         <Image floated='right' size='mini' src='https://www.freeiconspng.com/uploads/volume-icon-31.png' />

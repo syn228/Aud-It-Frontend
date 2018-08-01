@@ -1,5 +1,4 @@
 import Adapter from './components/Adapter'
-import {Tesseract} from "tesseract.ts";
 
 export function logInChange(event){
     return  {
@@ -47,9 +46,10 @@ export function onDrop(files, currentUserId){
   }
 }
 
-export function persistUser(userId){
+export function persistUser(userObj){
   return {
     type: "PERSIST_USER",
-    currentUserId: userId
+    currentUserId: userObj.id,
+    currentUserName: userObj.username
   }
 }

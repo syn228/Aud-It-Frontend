@@ -34,7 +34,7 @@ class Upload extends React.Component {
     const { loading } = this.state
     if (!loading){
       return (
-        <div className="backgroundImg">
+        <div style={{height: window.innerHeight}} className="backgroundImg">
         <section>
           <div >
             <Animation />

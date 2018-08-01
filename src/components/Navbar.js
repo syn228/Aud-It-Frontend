@@ -1,9 +1,7 @@
 import React, { Component, Fragment } from 'react';
 import { NavLink} from 'react-router-dom'
-import { Redirect } from 'react-router'
 import Adapter from './Adapter'
-import homelogo from '../assets/homelogo.png'
-import { Container, Dropdown } from 'semantic-ui-react'
+import { Dropdown } from 'semantic-ui-react'
 import { withRouter } from 'react-router-dom';
 
 class Navbar extends Component {
@@ -34,9 +32,9 @@ class Navbar extends Component {
                     ?
                         <Fragment>
                             <NavLink style={{color: "white"}} className="item tabs" exact to="/upload">Upload</NavLink>
-                            <NavLink style={{color: "white"}} className="item tabs" exact to="/files">My Files</NavLink>
                             <NavLink style={{color: "white"}} className="item tabs" exact to="/capture">Capture</NavLink>
                             <div className="right item">
+                            <NavLink style={{marginRight: '20px'}}className="ui primary button" exact to="/files">My Files</NavLink>
                             <NavLink className="ui button" to="/home" onClick={this.handleClick}>Log Out</NavLink>
                             </div>
                         </Fragment>

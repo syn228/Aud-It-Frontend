@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Button, Divider, Image, Transition } from 'semantic-ui-react'
+import { Divider, Image, Transition } from 'semantic-ui-react'
 
 class Animation extends Component {
   state = {

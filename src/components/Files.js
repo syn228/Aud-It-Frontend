@@ -20,12 +20,12 @@ class Files extends Component {
 
   render() {    
     return (
-      <div className="backgroundImg">
-        
-        <h1>Your Files</h1>
+      <div style={{height: window.innerHeight}} className="backgroundImg">
+        <h1>Welcome {this.props.currentUserName}!</h1>
+        <h1>Your Files:</h1>
         {this.state.files.length > 0 
         ?
-          this.state.files.map(file => 
+          this.state.files.map(file =>
             <File key={UUID()} files={this.state.files} file={file}/>
           )
         : 
@@ -36,7 +36,8 @@ class Files extends Component {
 }
 function mapStateToProps(state){
   return {
-  currentUserId: state.currentUserId
+  currentUserId: state.currentUserId,
+  currentUserName: state.currentUserName
   }
 }
 export default connect(mapStateToProps)(Files);
