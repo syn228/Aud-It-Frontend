@@ -93,6 +93,9 @@ class NewUpload extends Component {
       <Message.Header>Detected Text:</Message.Header>
       {this.props.file.text !== "" 
       ? 
+        this.props.file.text.length > 500 ?
+        <Message compact>{this.props.file.text.slice(0, 500)}...</Message>
+        :
         <Message compact>{this.props.file.text}</Message>
       :
         <Message compact>We could not find any text on the image you uploaded.</Message>
@@ -107,7 +110,6 @@ class NewUpload extends Component {
     )
   }
 }
-
 function mapStateToProps(state){
   return {
   latestUpload: state.latestUpload

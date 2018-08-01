@@ -83,7 +83,7 @@ class NewCapture extends Component {
     <Message>
     <Message.Header>Detected Text:</Message.Header>
     {this.props.file.text !== "" ? 
-      <Message compact>{this.props.file.text}</Message>
+      <Message compact>{this.props.file.text.slice(0, 500)}...</Message>
     :
     <Message compact>We could not find any text to detect.</Message>
     }

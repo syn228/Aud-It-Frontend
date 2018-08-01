@@ -58,7 +58,7 @@ class WebcamCapture extends Component {
     if (!loading){
     return (
       <div style={{height: window.innerHeight}} className="backgroundImg">
-        <h2>
+        <h2 style={{marginTop: '20px'}}>
           Take a picture of text and get the audio!
         </h2>
         <Webcam style={{marginTop: '50px'}}
