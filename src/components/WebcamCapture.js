@@ -58,6 +58,9 @@ class WebcamCapture extends Component {
     if (!loading){
     return (
       <div className="backgroundImg">
+        <h2>
+          Take a picture of text and get the audio!
+        </h2>
         <Webcam style={{marginTop: '50px'}}
           audio={false}
           height={350}
@@ -80,20 +83,15 @@ class WebcamCapture extends Component {
   }
   else {
     return (
-      <div className="loader">
-        <Message icon>
-        <Icon name='circle notched' loading />
-        <Message.Content>
-          <Message.Header>Just one second</Message.Header>
-          Detection in Progress
-        </Message.Content>
-      </Message>
-        <Grid.Column>
-          <Transition.Group animation='jiggle' duration={3000}>
-            {this.state.visible && <Image className="capture-animation" centered size='small' src='http://www.free-icons-download.net/images/camera-icon-43654.png' />}
-          </Transition.Group>
-        </Grid.Column>
-      </div>
+        <div className="loader">
+          <Message icon>
+          <Icon name='circle notched' loading />
+          <Message.Content>
+            <Message.Header>Just one second</Message.Header>
+            Detection in Progress
+          </Message.Content>
+          </Message>
+        </div>
     )
   }
   }
