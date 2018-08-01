@@ -7,6 +7,9 @@ import homelogo from '../assets/homelogo.png'
 import Adapter from './Adapter'
 
 class Registration extends Component {
+    state = {
+        errors: [],
+    }
     handleSubmit = (event) => {
         event.preventDefault();
         const body = {
@@ -24,19 +27,22 @@ class Registration extends Component {
         })
         .then(res => res.json())
         .then(json => {
-            if (json.username){
+            if (!json.errors){
                 localStorage.setItem('token', json.token);
                 Adapter.postSession(this.props.username, this.props.password, this.props.persistUser, this.props.history)
             }
             else {
-                alert("Something went wrong during your registration. Please try again later.")
+                this.setState({
+                    errors: json.errors
+                })
             }
         })
     }
 
     render() {
         return (
-            <div className='login-form backgroundImg'>
+            <div style={{height: window.innerHeight}} className="backgroundImg">
+            <div style={{paddingTop: "120px", paddingBottom: "20px"}}className='login-form'>
     <style>{`
       body > div,
       body > div > div,
@@ -75,6 +81,12 @@ class Registration extends Component {
       </Grid.Column>
     </Grid>
   </div>
+  {this.state.errors 
+            ? 
+                this.state.errors.map(error => <p style={{color: "red"}}>{error}</p>)
+            :
+    null}
+  </div>
 
 
 
@@ -104,7 +116,9 @@ class Registration extends Component {
 function mapStateToProps(state){
     return {
     username: state.registerUsername,
-    password: state.registerPassword
+    password: state.registerPassword,
+    first_name: state.first_name,
+    last_name: state.last_name,
     }
 }
 

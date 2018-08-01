@@ -98,10 +98,10 @@ class Adapter {
         .then(json => {
             if (json.username) {
             localStorage.setItem('token', json.token);
-            persistUser(json.id)
+            persistUser(json)
             history.push("/home")
             }   
-            else alert("Your username or password is wrong. Please try again.")
+            else alert(json.errors)
       })
     }
 

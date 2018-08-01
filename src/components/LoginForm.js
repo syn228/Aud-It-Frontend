@@ -13,15 +13,15 @@ class LoginForm extends Component {
 
     render() {
         return (
-
-            <div className='login-form backgroundImg'>
-    <style>{`
-      body > div,
-      body > div > div,
-      body > div > div > div.login-form {
-        height: 100%;
-      }
-    `}</style>
+            <div style={{height: window.innerHeight}} className="backgroundImg">
+            <div style={{paddingTop: '120px'}}className='login-form'>
+                <style>{`
+                    body > div,
+                    body > div > div,
+                    body > div > div > div.login-form {
+                        height: 100%;
+                    }`}
+                </style>
     <Grid textAlign='center' style={{ height: '100%' }} verticalAlign='middle'>
       <Grid.Column style={{ maxWidth: 450 }}>
         <Header as='h2' color='blue' textAlign='center'>
@@ -50,6 +50,7 @@ class LoginForm extends Component {
         </Message>
       </Grid.Column>
     </Grid>
+  </div>
   </div>
         )
     }

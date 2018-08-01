@@ -5,10 +5,6 @@ import { Dropdown } from 'semantic-ui-react'
 import { withRouter } from 'react-router-dom';
 
 class Navbar extends Component {
-    state = {
-    
-    }
-    
     handleClick = (event) => {  
         switch (event.target.innerText){
             case "Upload":

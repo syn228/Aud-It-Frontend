@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import VoicePlayer from '../VoicePlayer';
 import { Button, Card, Image } from 'semantic-ui-react'
 
-
 class File extends Component {
   state = {
     start: false,
@@ -61,9 +60,7 @@ class File extends Component {
 
   render() {
     return (
-      <div>
-      <Card.Group className="fileCard transparent">
-        <Card>
+        <Card style={{marginLeft: '10px', marginRight: '10px', marginTop: '50px'}}>
       <Card.Content>
         <Image floated='right' size='mini' src='https://www.freeiconspng.com/uploads/volume-icon-31.png' />
         <Card.Header>{this.props.file.name}</Card.Header>
@@ -81,14 +78,13 @@ class File extends Component {
           </Button>
         </div>
       </Card.Content>
-    </Card>
-    </Card.Group>
+    
         {this.state.start === true 
         ? 
           <VoicePlayer onEnd={this.onEnd} manual={this.cancelAudio} play={this.state.start} pause={this.state.pause} text={this.state.audiotext}/>
         : null
         } 
-      </div>
+      </Card>
     );
   }
 }

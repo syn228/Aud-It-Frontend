@@ -9,6 +9,13 @@
   position: relative;
 }
 
+.puzzled {
+  width: 50%;
+  position: relative;
+  height: auto;
+  left: 300px;
+}
+
 .headset {
   position: aboslute;
   bottom: 150px
@@ -51,9 +58,9 @@
 }
 
 .fileCard {
-  float: left;
-  padding: 25px;
-  margin: auto
+  padding-left: 30px;
+  padding-right: 30px;
+  padding-top: 20px;
 }
 
 .logo {
