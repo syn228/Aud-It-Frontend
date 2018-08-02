@@ -4,6 +4,7 @@ import { connect } from 'react-redux'
 import File from './File'
 import UUID from 'uuid'
 import { Card } from 'semantic-ui-react'
+import puzzled from '../assets/puzzled.png'
 
 class Files extends Component {
   state = {
@@ -34,7 +35,7 @@ class Files extends Component {
           <div>
           <h3 style={{position: "absolute", width: window.innerWidth}}>You don't have any files.</h3> 
           <h3 style={{marginTop: "30px", position: "absolute", width: window.innerWidth}}><a href="/upload" >Go convert them first! </a></h3>
-          <img style={{top: window.innerHeight/4, left: window.innerWidth/3}}className="puzzled" src="http://backgroundcheckall.com/wp-content/uploads/2017/12/thinking-emoji-transparent-background.png" alt=""/>
+          <img style={{top: window.innerHeight/4, left: window.innerWidth/3}}className="puzzled" src={puzzled} alt=""/>
           </div>
           }
           </Card.Group>
