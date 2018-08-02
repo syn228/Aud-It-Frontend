@@ -12,6 +12,8 @@ import { connect } from 'react-redux'
 import { persistUser } from './actions'
 import WebcamCapture from './components/WebcamCapture';
 import withAuth from './hoc/withAuth'
+import Account from './components/Account'
+import ConvertedTexts from './components/ConvertedTexts'
 
 
 
@@ -38,6 +40,8 @@ class App extends Component {
     const AuthedFiles = withAuth(Files);
     const AuthedWebcamCapture = withAuth(WebcamCapture);
     const AuthedUpload = withAuth(Upload);
+    const AuthedAccount = withAuth(Account);
+    const AuthedConvertedTexts = withAuth(ConvertedTexts);
     return (
       <Router>
         <div className="App">
@@ -47,6 +51,8 @@ class App extends Component {
           <Route exact path="/upload" component={(props) => <AuthedUpload {...props} />} />
           <Route exact path="/files" component={(props) => <AuthedFiles {...props} />} />
           <Route exact path="/home" component={(props) => <Logout {...props} />} />
+          <Route exact path="/account" component={(props) => <AuthedAccount {...props} />} />
+          <Route exact path="/text" component={(props) => <AuthedConvertedTexts {...props} />} />
           <Route exact path="/capture" component={(props) => <AuthedWebcamCapture {...props} />} />
           <Route exact path="/login" component={(props) => <LoginForm {...props} />} />
           <Route exact path="/register" component={(props) => <Registration {...props} />} />

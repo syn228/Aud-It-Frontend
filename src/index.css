@@ -9,6 +9,21 @@
   position: relative;
 }
 
+.account-choice {
+  font-size: 250%;
+  margin-top: 90px;
+}
+
+.each-text-title {
+  padding-bottom: 10px;
+}
+
+.each-text {
+  position: relative;
+  margin-right: 50px;
+  padding-right: 50px;
+}
+
 .puzzled {
   width: 50%;
   position: relative;

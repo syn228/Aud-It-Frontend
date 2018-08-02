@@ -30,7 +30,7 @@ class Navbar extends Component {
                             <NavLink style={{color: "white"}} className="item tabs" exact to="/upload">Upload</NavLink>
                             <NavLink style={{color: "white"}} className="item tabs" exact to="/capture">Capture</NavLink>
                             <div className="right item">
-                            <NavLink style={{marginRight: '20px'}}className="ui primary button" exact to="/files">My Files</NavLink>
+                            <NavLink style={{marginRight: '20px'}}className="ui primary button" exact to="/account">My Account</NavLink>
                             <NavLink className="ui button" to="/home" onClick={this.handleClick}>Log Out</NavLink>
                             </div>
                         </Fragment>
