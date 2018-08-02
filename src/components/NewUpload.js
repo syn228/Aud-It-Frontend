@@ -70,7 +70,7 @@ class NewUpload extends Component {
   render() {
     return (
       <div>
-      <Card style={{right: '10px' }}className="ui container center aligned">
+      <Card style={{right: '10px', marginTop: "20px" }}className="ui container center aligned">
       <Card.Content>
         <Image floated='right' size='mini' src='https://www.freeiconspng.com/uploads/volume-icon-31.png' />
         <Card.Header>{this.props.file.name}</Card.Header>

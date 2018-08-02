@@ -51,7 +51,7 @@ class WebcamCapture extends Component {
   render() {
     const {loading} = this.state
     const videoConstraints = {
-      width: 720,
+      width: 1280,
       height: 1280,
       facingMode: 'user',
     };

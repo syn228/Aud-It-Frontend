@@ -34,7 +34,7 @@ class Upload extends React.Component {
     const { loading } = this.state
     if (!loading){
       return (
-        <div style={{height: window.innerHeight}} className="backgroundImg">
+        <div style={{height: window.innerHeight}}className="backgroundImg">
         <section>
           <div >
             <Animation />
@@ -52,8 +52,9 @@ class Upload extends React.Component {
               </div>
             </Dropzone>
           </div>
-          <aside>
-            <ul>
+          
+          <aside >
+            <ul className="new-upload">
               {
                 this.props.latestUpload.length !== 0 
                 ? 
