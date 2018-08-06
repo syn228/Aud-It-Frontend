@@ -1,5 +1,3 @@
-import Adapter from "./components/Adapter"
-
 const defaultState = {
   loginUsername: "",
   loginPassword: "",

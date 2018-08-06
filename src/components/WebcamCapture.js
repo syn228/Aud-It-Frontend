@@ -4,7 +4,7 @@ import { connect } from 'react-redux'
 import { onDrop, clearData } from "../actions"
 import UUID from "uuid"
 import NewCapture from './NewCapture'
-import { Grid, Transition, Image, Message, Icon } from 'semantic-ui-react'
+import { Message, Icon } from 'semantic-ui-react'
 
 class WebcamCapture extends Component {
   state = {

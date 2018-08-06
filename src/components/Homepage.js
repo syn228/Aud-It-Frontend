@@ -1,9 +1,7 @@
 import React from 'react';
 import Adapter from './Adapter'
-import {Button, Grid, Image, Transition, Container, Header, Icon, Segment,} from 'semantic-ui-react'
+import {Button, Container, Header, Icon, Segment,} from 'semantic-ui-react'
 import logo  from '../assets/logo.png'
-
-const transition = "fly left"
 
 class Homepage extends React.Component {
     handleClick = () => {
