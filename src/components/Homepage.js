@@ -40,7 +40,7 @@ class Homepage extends React.Component {
                 color: "blue",
             }}
             /><br/>
-            <Button onClick={() => this.handleClick()} primary size='huge'>
+            <Button className="home-start" onClick={() => this.handleClick()} primary size='huge'>
             Get Started
             <Icon name='right arrow' />
             </Button>
