@@ -28,8 +28,9 @@ class Homepage extends React.Component {
             vertical
         >
             <Container text>
-            <img style={{maxWidth: "100%"}}src={logo} alt=""/>
+            <img className="aud-it-logo" style={{maxWidth: "100%"}}src={logo} alt="aud-it-logo"/>
             <Header
+            className="home-description"
             as='h1'
             content='Application for Converting Image of Text into Audio'
             inverted
