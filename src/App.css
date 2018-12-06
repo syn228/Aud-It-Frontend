@@ -1,16 +1,20 @@
+html {
+  font-size: 62.5%
+}
+
 .App {
   text-align: center;
 }
 
 .App-logo {
   animation: App-logo-spin infinite 20s linear;
-  height: 80px;
+  height: 8rem;
 }
 
 .App-header {
   background-color: #222;
-  height: 150px;
-  padding: 20px;
+  height: 15rem;
+  padding: 2rem;
   color: white;
 }
 
@@ -43,11 +47,11 @@
 @keyframes moveInFromLeft {
   0% {
     opacity: 0;
-    transform: translateX(-100px)
+    transform: translateX(-10rem)
   }
 
   80% {
-    transform: translateX(10px)
+    transform: translateX(1rem)
   }
 
   100% {
@@ -69,7 +73,7 @@
 @keyframes moveInFromBottom {
   0% {
     opacity: 0;
-    transform: translateY(30px)
+    transform: translateY(3rem)
   }
   100% {
     opacity: 1;
