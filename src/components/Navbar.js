@@ -7,6 +7,8 @@ import { withRouter } from 'react-router-dom';
 class Navbar extends Component {
     handleClick = (event) => {  
         switch (event.target.innerText){
+            case "Home":
+            this.props.history.push("/home")
             case "Upload":
             this.props.history.push("/login")
             break;
@@ -23,7 +25,7 @@ class Navbar extends Component {
         return (
             <div>
                 <header className="ui menu" style={{backgroundColor: "#333"}}>
-                <NavLink style={{color: "white"}} className="item tabs" exact to="/home">Home</NavLink>
+                <NavLink style={{color: "white"}} className="item tabs" onClick={this.handleClick} exact to="/home">Home</NavLink>
                     { Adapter.isLoggedIn() 
                     ?
                         <Fragment>

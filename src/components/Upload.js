@@ -1,5 +1,5 @@
 import Dropzone from 'react-dropzone'
-import React from 'react'
+import React, {Component, Fragment} from 'react'
 import { connect } from "react-redux"
 import { onDrop, clearData } from "../actions"
 import NewUpload from './NewUpload';
@@ -7,7 +7,7 @@ import UUID from 'uuid'
 import Animation from './Animation'
 import { Message, Icon } from 'semantic-ui-react'
 
-class Upload extends React.Component {
+class Upload extends Component {
   state = {
     loading: false,
   }
@@ -25,7 +25,7 @@ class Upload extends React.Component {
         this.setState({
           loading: false
         }),
-      3000)
+      5000)
     })
     this.props.onDrop(files, this.props.currentUserId)
   }
@@ -33,8 +33,22 @@ class Upload extends React.Component {
   render() {
     const { loading } = this.state
     if (!loading){
+      if (this.props.latestUpload.length !== 0){
+        return (
+          <div className="backgroundImg">
+            <ul className="new-upload">
+              { 
+                this.props.latestUpload.map(file => 
+                <NewUpload key={UUID()} file={file}/>
+                )
+              }
+            </ul>
+          </div>
+        )
+      }
+      else {
       return (
-        <div style={{height: window.innerHeight}}className="backgroundImg">
+        <div className="backgroundImg">
         <section>
           <div >
             <Animation />
@@ -53,32 +67,24 @@ class Upload extends React.Component {
             </Dropzone>
           </div>
           
-          <aside >
-            <ul className="new-upload">
-              {
-                this.props.latestUpload.length !== 0 
-                ? 
-                this.props.latestUpload.map(file => 
-                  <NewUpload key={UUID()} file={file}/>
-                )
-                : null
-              }
-            </ul>
-          </aside>
+          
         </section>
         </div>
       );
     }
+  }
     else {
       return (
-        <div className="loader">
-        <Message icon>
-        <Icon name='circle notched' loading />
-        <Message.Content>
-          <Message.Header>Just one second</Message.Header>
-          Conversion in Progress
-        </Message.Content>
-      </Message>
+        <div className="backgroundImg">
+          <div className="loader">
+            <Message icon>
+            <Icon name='circle notched' loading />
+            <Message.Content>
+              <Message.Header>Just one second</Message.Header>
+              Conversion in Progress
+            </Message.Content>
+            </Message>
+          </div>
       </div>
       )
     }
