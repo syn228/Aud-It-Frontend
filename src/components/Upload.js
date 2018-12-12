@@ -3,9 +3,10 @@ import React, {Component, Fragment} from 'react'
 import { connect } from "react-redux"
 import { onDrop, clearData } from "../actions"
 import NewUpload from './NewUpload';
+import { withRouter } from 'react-router-dom';
 import UUID from 'uuid'
 import Animation from './Animation'
-import { Message, Icon } from 'semantic-ui-react'
+import { Message, Icon, Button } from 'semantic-ui-react'
 
 class Upload extends Component {
   state = {
@@ -15,7 +16,6 @@ class Upload extends Component {
   componentDidMount() {
     this.props.clearData()
   }
-  
 
   handleUpload = (files) => {
     this.setState({
@@ -36,13 +36,20 @@ class Upload extends Component {
       if (this.props.latestUpload.length !== 0){
         return (
           <div className="backgroundImg">
-            <ul className="new-upload">
-              { 
-                this.props.latestUpload.map(file => 
-                <NewUpload key={UUID()} file={file}/>
-                )
-              }
-            </ul>
+            <div className="upload-container">
+              <ul className="new-upload">
+                { 
+                  this.props.latestUpload.map(file => 
+                  <NewUpload key={UUID()} file={file}/>
+                  )
+                }
+              </ul>
+              <form>
+              <Button className="upload-button" primary size='huge'>
+                Convert Another File
+              </Button>
+              </form>
+            </div>
           </div>
         )
       }
@@ -97,4 +104,4 @@ function mapStateToProps(state){
   }
 }
 
-export default connect(mapStateToProps, { onDrop, clearData })(Upload);
+export default withRouter(connect(mapStateToProps, { onDrop, clearData })(Upload));
