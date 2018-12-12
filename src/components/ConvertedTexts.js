@@ -24,7 +24,7 @@ class ConvertedTexts extends Component {
 
   render() {
     return (
-      <div style={{height: window.innerHeight}} className="backgroundImg">
+      <div style={{height: window.innerHeight}} className="background-image">
       <h1 style={{marginTop: '20px', width: window.innerWidth}}>Your Texts:</h1>
         <Accordion className="text-list">
         {this.state.files.length > 0 

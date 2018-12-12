@@ -35,7 +35,7 @@ class Upload extends Component {
     if (!loading){
       if (this.props.latestUpload.length !== 0){
         return (
-          <div className="backgroundImg">
+          <div className="background-image">
             <div className="upload-container">
               <ul className="new-upload">
                 { 
@@ -55,7 +55,7 @@ class Upload extends Component {
       }
       else {
       return (
-        <div className="backgroundImg">
+        <div className="background-image">
         <section>
           <div >
             <Animation />
@@ -82,7 +82,7 @@ class Upload extends Component {
   }
     else {
       return (
-        <div className="backgroundImg">
+        <div className="background-image">
           <div className="loader">
             <Message icon>
             <Icon name='circle notched' loading />

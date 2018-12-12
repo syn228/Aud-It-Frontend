@@ -19,7 +19,7 @@ class Account extends Component {
   }
   render (){
     return (
-      <div style={{height: window.innerHeight}} className="backgroundImg">
+      <div style={{height: window.innerHeight}} className="background-image">
       <h1 style={{marginTop: '20px'}}>Welcome {this.props.currentUserName}!</h1>
       <List onClick={this.handleClick} link>
         <List.Item className="account-choice" as='a'>Home</List.Item>

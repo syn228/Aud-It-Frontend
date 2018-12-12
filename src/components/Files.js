@@ -22,7 +22,7 @@ class Files extends Component {
 
   render() {    
     return (
-      <div style={{height: window.innerHeight}} className="backgroundImg">
+      <div style={{height: window.innerHeight}} className="background-image">
         <h1 style={{marginTop: '20px', marginLeft: '10px',width: window.innerWidth}}>Your Audio:</h1>
         <Card.Group className="fileCard" itemsPerRow={5}>
         {this.state.files.length > 0 

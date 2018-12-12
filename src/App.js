@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import './App.css';
 import Navbar from './components/Navbar'
 import Homepage from './components/Homepage'
+import About from './components/About'
 import LoginForm from './components/LoginForm'
 import Upload from './components/Upload'
 import Files from './components/Files'
@@ -48,6 +49,7 @@ class App extends Component {
         <Navbar />
         <Switch>
           <Route exact path="/home" component={Homepage} />   
+          <Route exact path="/about" component={About} />   
           <Route exact path="/upload" component={(props) => <AuthedUpload {...props} />} />
           <Route exact path="/files" component={(props) => <AuthedFiles {...props} />} />
           <Route exact path="/home" component={(props) => <Logout {...props} />} />

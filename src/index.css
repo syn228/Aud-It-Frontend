@@ -114,11 +114,39 @@
   background-color: gray
 }
 
-.backgroundImg {
+.background-image {
   background-image: url("data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wCEAAkGBwoICAcHCA0QBwgHBw0HBwcHDQ8ICQcKFREWFhURExMYHSggGBoxGxMfITEhJSkrLi4uFx8zODMsNygtLisBCgoKDQ0NDg0NFSsZFRk3KysrLTcrLS0rKysrKzcrKysrKystLSsrLSsrKysrKysrKysrKysrKysrKysrKysrK//AABEIALEBHAMBIgACEQEDEQH/xAAZAAADAQEBAAAAAAAAAAAAAAAAAQIDBAb/xAAaEAEBAQEBAQEAAAAAAAAAAAAAEQESAhMD/8QAFwEBAQEBAAAAAAAAAAAAAAAAAAECA//EABURAQEAAAAAAAAAAAAAAAAAAAAR/9oADAMBAAIRAxEAPwD2/I5b8Dh3riw5HLfgcFGHI5b8Dgow5HLfgcFGHI5b8Dgow5PhvnhWeCq5+Dzw6c/NWfmlI5vmfzdPzP5lI5fmfzdXzHzKRyfMfN1/MfMpHH8y383Z807+ZSOTfBcOvfzTv5rSOXguXTvhPBRhyOW/A4KjDkct+BwUYcjlvwOCjDkct+BwUYcjlvwOCjbkctYIjTLkctYIDLkctYIDLkctYIgz4PPDXMVnkGWeFZ4bZis8lGOeFZ4a5hxFZcDlrBAZcny0ggMuRy1ggMuS4bQQGG+E7+bohb5Bzb4Tvh1b5Tvlajl4Lh0b5TuAx5HLWCKMuRy1ggMuRy1ggMuRy1ggKgi4IgiCLggIgi4ICIrMPMVmClmKzyrMVmIFmHDhgmCKAJgigCYIoAmCKAJgigCYIoAiFvlpC3AY75TuNtxO4DHcKNNwoqIgi4ICIIuCAiCLggKgioIipgioICYIqDMAsxeYMxeYBZioeYcQSFQQVJw4cBMOKzyfIIgjTkcgzgjTkuQZwRpyXIM4FwoCRFQQEbidxpC3FRjuFGm4ncBEEVBATBFQQEwRUEBUEVBATBFQQEw8w4eYAzFZgzFZiKIFCAk4cVmIJzFZisw4CYcMwSFAEiKAJhbihAZ7hbjWJ3AZkuFFEluLhQGe4ncabidwRnBFbgiiYIqCAmCKggKgioIipgioICYeYcPMAZiswZisxAocOHmAWYrMGYrMFIKggJCoICQqCAkKggJCoICRuKhQEbidxpuJ3ATCioIIz3E7jTcTuKI3CitwQEwRUEBMEVBAVBFQRBMEVBATDhw8wBiswsxWAIeYIYozDPMMCBhAgYAgYAgYAgYAgYBJbi06ojcKL3CBGp3F6W4IiFFQQEwRUEBMEVBAXBFQQEwRUEBMEVBAI8EPBRiswZh4BwQ8wRAgcEAgcEAgcEAgcEAgcEAgcEAoW4qFuAjSXqdUSncXCgJgioIImCKggJgioICoIqCCpgioICYIqCAmHDggAxDxAzGHAIHBAIHBAIHBAIHBAIHBAIHBASWqIE6nVlARBFQRRMEVBATBFQQEwRUEAvp5H08uTsdkSuv6eR9PLk7HZCuv6YPpjl7HZCur6YPpjl7HZCuv6YM/THJ2f0Irsz3h9Y5M/ReewdPWDrGGez6QbdYOsZdDoGvWCsuh0Daisui6BtRWPQ6BrR1jLpO+wbb6wt94w32nfawdHeF3jm7HZB094O8c3Y7IOnvB3jm7HZB09YO8c3Y7IOnrB1jn7HZBx9jtzfQfRtl09jpz/QfRIOjs+3N9B9Fg6ex25voO0iOnsdub6H9CDqz2rP0cfZ5+hFrvz9FZ7cOfo0z9EhXXns+3Ln6K+hFro7Ptz9jsK6Ox25+x2Qrfou2G/onf0IV0b7Rv6Off0Rv6ESujf0T259/Qu1hXT2O3P2Owro7Hbn7HZB0djtz9jsHR2O3P2OwdHY7c/Y7BxABpkYYAAACjDMARgADIAvy08gILxWAIqsMBUBAAnU6Aio9J9AKhAAAAAAAAAADwAAAAD//Z");
   background-size: cover;
   overflow: hidden;
   height: 95vh;
+}
+
+.background-image-about {
+  background-image: linear-gradient(
+    to right bottom,
+     rgba(63, 150, 191, 0.55),
+     rgba(63, 191, 191, 0.45)),
+  url("http://newyork-onmymind.com/wp-content/uploads/2015/06/tumblr_mlazg3Opao1r8bc3no1_1280.jpg");
+  background-size: cover;
+  overflow: hidden;
+  height: 95vh;
+  opacity: .70
+}
+
+.about-description {
+  margin-top: 300px;
+}
+
+.about-heading {
+  font-weight: 700;
+  display: inline-block;
+  color: navy;
+}
+
+.about-paragraph {
+  font-weight: 700;
+  display: inline-block;
+  color: navy;
 }
 
 .imgrep {

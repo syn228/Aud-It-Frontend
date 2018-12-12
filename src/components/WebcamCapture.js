@@ -58,7 +58,7 @@ class WebcamCapture extends Component {
     if (!loading){
       if(this.props.latestUpload.length !== 0 ){
         return (
-          <div className="backgroundImg">
+          <div className="background-image">
             <ul className="new-upload">
               { 
                 this.props.latestUpload.map(file => 
@@ -75,7 +75,7 @@ class WebcamCapture extends Component {
       }
       else {
         return (
-          <div style={{height: window.innerHeight}} className="backgroundImg">
+          <div style={{height: window.innerHeight}} className="background-image">
             <h2 style={{marginTop: '20px'}}>
               Take a picture of text and get the audio!
             </h2>
@@ -94,7 +94,7 @@ class WebcamCapture extends Component {
     }
     else {
       return (
-        <div className="backgroundImg">
+        <div className="background-image">
           <div className="loader">
             <Message icon>
             <Icon name='circle notched' loading />

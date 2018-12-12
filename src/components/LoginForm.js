@@ -13,7 +13,7 @@ class LoginForm extends Component {
 
     render() {
         return (
-            <div style={{height: window.innerHeight}} className="backgroundImg">
+            <div style={{height: window.innerHeight}} className="background-image">
             <div style={{paddingTop: '120px'}}className='login-form'>
                 <style>{`
                     body > div,

@@ -14,7 +14,7 @@ class Homepage extends React.Component {
 
     render(){
     return (
-        <div style={{height: window.innerHeight}} className="backgroundImg">
+        <div style={{height: window.innerHeight}} className="background-image">
         <Segment
             textAlign='center'
             style={{ 

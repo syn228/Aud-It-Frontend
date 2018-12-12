@@ -9,6 +9,8 @@ class Navbar extends Component {
         switch (event.target.innerText){
             case "Home":
             this.props.history.push("/home")
+            case "About":
+            this.props.history.push("/about")
             case "Upload":
             this.props.history.push("/login")
             break;
@@ -17,6 +19,7 @@ class Navbar extends Component {
             break;
             case "Log Out":
             Adapter.logout();
+            this.props.history.push("/home")
             break;
         }
     }
@@ -26,6 +29,7 @@ class Navbar extends Component {
             <div>
                 <header className="ui menu" style={{backgroundColor: "#333"}}>
                 <NavLink style={{color: "white"}} className="item tabs" onClick={this.handleClick} exact to="/home">Home</NavLink>
+                <NavLink style={{color: "white"}} className="item tabs" onClick={this.handleClick} exact to="/about">About</NavLink>
                     { Adapter.isLoggedIn() 
                     ?
                         <Fragment>
