@@ -13,11 +13,13 @@ class ConvertedTexts extends Component {
 
   componentDidMount() {
     Adapter.getFiles()
-    .then(json => this.setState(
-      {
-        files: json.filter(file => file.user_id === this.props.currentUserId)
-      }
-    ))
+    .then(json => 
+      this.setState(
+        {
+          files: json.filter(file => file.user_id === this.props.currentUserId)
+        }
+      )
+    )
   }
 
   render() {
@@ -31,12 +33,13 @@ class ConvertedTexts extends Component {
             <ConvertedText key={UUID()} files={this.state.files} file={file}/>
           )
         : 
+        setTimeout(() => {
           <div>
           <h3 style={{position: "absolute", width: window.innerWidth}}>You don't have any files.</h3> 
           <h3 style={{marginTop: "30px", position: "absolute", width: window.innerWidth}}><a href="/upload" >Go convert them first! </a></h3>
           <img style={{position: 'absolute', height: 'auto', maxWidth: '20%', top: window.innerHeight/3, left: window.innerWidth/2.5}} src={puzzled} alt=""/>
           </div>
-          }
+        }, 1000)}
         </Accordion>
       </div>
     );

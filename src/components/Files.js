@@ -31,12 +31,13 @@ class Files extends Component {
             <File key={UUID()} files={this.state.files} file={file}/>
           )
         : 
+        setTimeout(() => {
           <div>
           <h3 style={{position: "absolute", width: window.innerWidth}}>You don't have any files.</h3> 
           <h3 style={{marginTop: "30px", position: "absolute", width: window.innerWidth}}><a href="/upload" >Go convert them first! </a></h3>
-          <img style={{top: window.innerHeight/4, left: window.innerWidth/3}}className="puzzled" src={puzzled} alt=""/>
+          <img style={{position: 'absolute', height: 'auto', maxWidth: '20%', top: window.innerHeight/3, left: window.innerWidth/2.5}} src={puzzled} alt=""/>
           </div>
-          }
+        }, 1000)}
           </Card.Group>
       </div>
     )
